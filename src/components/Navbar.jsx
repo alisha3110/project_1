@@ -13,6 +13,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
     setMobileDrawerOpen(!mobileDrawerOpen);
   };
 
+  const closeNavbar = () => {
+    setMobileDrawerOpen(false);
+  };
+
   // Function to determine if a link is active based on its path
   const isActiveLink = (path) => {
     return location.pathname === path;
@@ -72,7 +76,10 @@ const Navbar = ({ isAuthenticated, logout }) => {
           <div className="lg:hidden flex flex-row justify-end items-center">
             {isAuthenticated ? (
               <button
-                onClick={logout}
+                onClick={() => {
+                  logout();
+                  closeNavbar();
+                }}
                 className="bg-gradient-to-r from-red-500 to-orange-800 py-1.5 px-4 border text-white rounded-md hover:font-bold mr-2"
               >
                 Log Out
@@ -80,6 +87,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
             ) : (
               <Link
                 to="/login"
+                onClick={closeNavbar}
                 className="bg-gradient-to-r from-red-500 to-orange-800 py-1.5 px-4 border text-white rounded-md hover:font-bold mr-2"
               >
                 Log In
