@@ -34,10 +34,8 @@ function App() {
     return isAuthenticated ? children : <Navigate to="/login" />;
   };
 
-  const basename = import.meta.env.VITE_BASE_URL || "/";
-
   return (
-    <Router basename={basename}>
+    <Router>
       <Navbar isAuthenticated={isAuthenticated} logout={logout} />
       <div
         className="w-full min-h-screen p-10"
