@@ -6,4 +6,13 @@
 
 :root {
   font-family: "Poppins", sans-serif;
+  background-color: #fffafa;
+}
+
+.active-link {
+  font-weight: bold;
+  border: 1px solid grey;
+  border-radius: 6px;
+  box-shadow: 0 0 10px #a9b6b6;
+  /* Add other styles to highlight the active link */
 }

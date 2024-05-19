@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "main-bg": "#f7efef",
+        "theme-bg": "#f7efef",
+        "theme-font": "#737171",
       },
     },
   },
