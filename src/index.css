@@ -9,10 +9,58 @@
   background-color: #fffafa;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .active-link {
   font-weight: bold;
   border: 1px solid grey;
   border-radius: 6px;
   box-shadow: 0 0 10px #a9b6b6;
   /* Add other styles to highlight the active link */
+}
+
+/* Define scrollbar styles with animations */
+::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    #7f7f7f,
+    #d8d8d8
+  ); /* Gradient background of the handle */
+  border-radius: 10px; /* Border radius of the handle */
+  transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    #1f1111,
+    #d8d8d8
+  ); /* Gradient background of the handle on hover */
+}
+
+/* Handle when scrolling */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(
+    135deg,
+    #7f7f7f,
+    #d8d8d8
+  ); /* Gradient background of the handle when scrolling */
+}
+
+/* Animate scrollbar when scrolling */
+::-webkit-scrollbar-thumb {
+  transition: background 0.3s ease; /* Smooth transition for background color */
 }
