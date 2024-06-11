@@ -56,7 +56,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
           {navItems.map((item, id) => (
             <motion.li
               key={id}
-              className={`flex min-w-16 hover:font-bold justify-center p-2 ${
+              className={`flex min-w-16 justify-center p-2 ${
                 isActiveLink(item.href) ? "active-link" : ""
               }`}
               whileHover={{ scale: 1.1 }}
@@ -76,6 +76,11 @@ const Navbar = ({ isAuthenticated, logout }) => {
           )}
           <div className="hidden lg:flex justify-center items-center">
             {isAuthenticated ? (
+              <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center justify-center"
+            >
               <button
                 onClick={logout}
                 className="flex bg-gradient-to-r from-red-500 to-orange-800 py-2 px-4 border text-white rounded-md hover:font-bold items-center justify-center"
@@ -83,6 +88,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
               >
                 Log Out
               </button>
+              </motion.div>
             ) : (
               <motion.div
                 whileHover={{ scale: 1.05 }}

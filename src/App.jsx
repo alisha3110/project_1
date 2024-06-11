@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
@@ -36,13 +37,14 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar isAuthenticated={isAuthenticated} logout={logout} />
-        <main className="flex-grow container mx-auto p-8">
+        <main className="flex-grow container mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
             <Route path="/team" element={<Team />} />
             <Route path="/login" element={<Login login={login} />} />
+            <Route path="/register" element={<Register login={login} />} />
             <Route
               path="/dashboard"
               element={

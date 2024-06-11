@@ -7,6 +7,9 @@ export default {
         "theme-bg": "#f7efef",
         "theme-font": "#737171",
       },
+      width: {
+        "90": "95%"
+      }
     },
   },
   plugins: [],
