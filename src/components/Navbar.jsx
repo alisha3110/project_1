@@ -4,6 +4,7 @@ import { navItems } from "../constants";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import CommonButton from "../components/CommonButton";
 
 const Navbar = ({ isAuthenticated, logout }) => {
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -39,9 +40,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 py-3 border-b border-neutral-300/80 bg-theme-bg px-6 shadow-lg ${
-        isScrolled ? "bg-opacity-90" : ""
-      }`}
+      className={`sticky top-0 z-50 py-3 border-b border-neutral-300/80 bg-theme-bg px-6 shadow-lg ${isScrolled ? "bg-opacity-90" : ""
+        }`}
     >
       <div className="container mx-auto relative flex justify-between items-center text-sm">
         <div className="flex items-center flex-shrink-0">
@@ -56,9 +56,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
           {navItems.map((item, id) => (
             <motion.li
               key={id}
-              className={`flex min-w-16 justify-center p-2 ${
-                isActiveLink(item.href) ? "active-link" : ""
-              }`}
+              className={`flex min-w-16 justify-center p-2 ${isActiveLink(item.href) ? "active-link" : ""
+                }`}
               whileHover={{ scale: 1.1 }}
             >
               <Link to={item.href}>{item.label}</Link>
@@ -66,9 +65,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
           ))}
           {isAuthenticated && (
             <motion.li
-              className={`flex min-w-28 hover:font-bold justify-center p-2 ${
-                isActiveLink("/dashboard") ? "active-link" : ""
-              }`}
+              className={`flex min-w-28 hover:font-bold justify-center p-2 ${isActiveLink("/dashboard") ? "active-link" : ""
+                }`}
               whileHover={{ scale: 1.1 }}
             >
               <Link to="/dashboard">Dashboard</Link>
@@ -77,17 +75,15 @@ const Navbar = ({ isAuthenticated, logout }) => {
           <div className="hidden lg:flex justify-center items-center">
             {isAuthenticated ? (
               <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center"
-            >
-              <button
-                onClick={logout}
-                className="flex bg-gradient-to-r from-red-500 to-orange-800 py-2 px-4 border text-white rounded-md hover:font-bold items-center justify-center"
-                style={{ width: "7em" }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center justify-center"
               >
-                Log Out
-              </button>
+                <CommonButton
+                  onClick={logout}
+                >
+                  Logout
+                </CommonButton>
               </motion.div>
             ) : (
               <motion.div
@@ -97,44 +93,45 @@ const Navbar = ({ isAuthenticated, logout }) => {
               >
                 <Link
                   to="/login"
-                  className="flex w-20 bg-gradient-to-r from-red-500 to-orange-800 py-2 px-4 border text-white rounded-md hover:font-bold"
                 >
-                  Log In
+                  <CommonButton>
+                    Log In
+                  </CommonButton>
                 </Link>
+
               </motion.div>
             )}
           </div>
         </ul>
-        <div className="lg:hidden flex flex-row justify-end items-center">
+        <div className="lg:hidden flex flex-row justify-end items-center ">
           {isAuthenticated ? (
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center mr-2"
             >
-              <button
+              <CommonButton
                 onClick={() => {
                   logout();
                   closeNavbar();
                 }}
-                className="bg-gradient-to-r from-red-500 to-orange-800 py-1.5 px-4 border text-white rounded-md hover:font-bold mr-2"
               >
-                Log Out
-              </button>
+                Logout
+              </CommonButton>
             </motion.div>
           ) : (
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center mr-2"
             >
               <Link
-                to="/login"
-                onClick={closeNavbar}
-                className="bg-gradient-to-r from-red-500 to-orange-800 py-1.5 px-4 border text-white rounded-md hover:font-bold mr-2"
-              >
-                Log In
+                to="/login">
+                <CommonButton onClick={closeNavbar}>
+                  Log In
+                </CommonButton>
               </Link>
+
             </motion.div>
           )}
           <button onClick={toggleNavbar}>
@@ -154,9 +151,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
               {navItems.map((x, y) => (
                 <motion.li
                   key={y}
-                  className={`text-center p-3 hover:font-bold ${
-                    isActiveLink(x.href) ? "active-link" : ""
-                  }`}
+                  className={`text-center p-3 hover:font-bold ${isActiveLink(x.href) ? "active-link" : ""
+                    }`}
                   whileHover={{ scale: 1.1 }}
                 >
                   <Link to={x.href} onClick={toggleNavbar}>
@@ -166,9 +162,8 @@ const Navbar = ({ isAuthenticated, logout }) => {
               ))}
               {isAuthenticated && (
                 <motion.li
-                  className={`text-center p-3 hover:font-bold ${
-                    isActiveLink("/dashboard") ? "active-link" : ""
-                  }`}
+                  className={`text-center p-3 hover:font-bold ${isActiveLink("/dashboard") ? "active-link" : ""
+                    }`}
                   whileHover={{ scale: 1.1 }}
                 >
                   <Link to="/dashboard" onClick={toggleNavbar}>
