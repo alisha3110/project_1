@@ -51,14 +51,14 @@ const Login = ({ login }) => {
       className="h-full flex flex-col items-center justify-center min_height"
     >
       <section className="">
-        <div className="container p-4 md:p-10">
+        <div className="container py-8 px-6 md:p-10">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
                 <div className="g-0 lg:flex lg:flex-wrap">
                   {/* <!-- Left column container--> */}
                   <div className="px-4 md:px-0 lg:w-6/12">
-                    <div className="md:mx-6 p-3 pt-8 md:p-12">
+                    <div className="md:mx-6 p-3 pt-8 pb-8 md:p-12">
                       {/* <!--Logo--> */}
                       <div className="text-center">
                         <img
@@ -147,7 +147,7 @@ const Login = ({ login }) => {
                         "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)",
                     }}
                   >
-                    <div className="px-4 py-6 text-white md:mx-6 md:p-12">
+                    <div className="py-12 p-8 text-white md:mx-6 md:p-12">
                       <h4 className="mb-6 text-xl font-semibold">
                         We are more than just a company
                       </h4>
