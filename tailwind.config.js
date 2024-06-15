@@ -12,7 +12,7 @@ export default {
         "85": "85%"
       },
       backgroundImage: {
-        'modal_bg': "url('/project_1/src/assets/modal_bg.jpeg')",
+        'modal_bg': "url('./assets/modal_bg.jpeg')",
       }
     },
   },
