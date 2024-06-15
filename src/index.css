@@ -1,14 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #ffffff, #c24d4d, #c07000);
+  font-family: "Nunito", "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffffff, #c7c7c7, #ecd2ae);
     background-size: 600% 600%;
     animation: gradient 10s ease infinite;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    background: #101827;
+    background-size: 600% 600%;
+    animation: gradient 10s ease infinite;
+  }
+
+  /* Add additional dark mode styles if needed */
 }
 
 html {
@@ -18,6 +30,7 @@ html {
 .active-link {
   font-weight: bold;
   border-radius: 6px;
+  transform: scale(1.1) !important;
   /* Add other styles to highlight the active link */
 }
 
@@ -25,46 +38,54 @@ html {
   min-height: calc(100vh - 73px);
 }
 
-/* Define scrollbar styles with animations */
-::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
+/* Apply custom scrollbar styles only on larger screens */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      135deg,
+      #7f7f7f,
+      #d8d8d8
+    ); /* Gradient background of the handle */
+    border-radius: 10px; /* Border radius of the handle */
+    transition: background 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+      135deg,
+      #1f1111,
+      #d8d8d8
+    ); /* Gradient background of the handle on hover */
+  }
+
+  /* Handle when scrolling */
+  ::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(
+      135deg,
+      #7f7f7f,
+      #d8d8d8
+    ); /* Gradient background of the handle when scrolling */
+  }
+
+  /* Animate scrollbar when scrolling */
+  ::-webkit-scrollbar-thumb {
+    transition: background 0.3s ease; /* Smooth transition for background color */
+  }
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    135deg,
-    #7f7f7f,
-    #d8d8d8
-  ); /* Gradient background of the handle */
-  border-radius: 10px; /* Border radius of the handle */
-  transition: background 0.3s ease; /* Smooth transition for background color */
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    135deg,
-    #1f1111,
-    #d8d8d8
-  ); /* Gradient background of the handle on hover */
-}
-
-/* Handle when scrolling */
-::-webkit-scrollbar-thumb:active {
-  background: linear-gradient(
-    135deg,
-    #7f7f7f,
-    #d8d8d8
-  ); /* Gradient background of the handle when scrolling */
-}
-
-/* Animate scrollbar when scrolling */
-::-webkit-scrollbar-thumb {
-  transition: background 0.3s ease; /* Smooth transition for background color */
+.modal_bg_css {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 43%;
 }

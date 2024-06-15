@@ -8,7 +8,11 @@ export default {
         "theme-font": "#737171",
       },
       width: {
-        "90": "95%"
+        "90": "90%",
+        "85": "85%"
+      },
+      backgroundImage: {
+        'modal_bg': "url('/project_1/src/assets/modal_bg.jpeg')",
       }
     },
   },
