@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Blog from "./pages/Blog";
+import Blogs from "./pages/Blogs";
 import About from "./pages/About";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
@@ -40,7 +40,7 @@ function App() {
         <main className="flex-grow container mx-auto">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog" element={<Blogs />} />
             <Route path="/about" element={<About />} />
             <Route path="/team" element={<Team />} />
             <Route path="/login" element={<Login login={login} />} />

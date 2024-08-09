@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import logo from "../assets/brand_logo.jpg";
+import logo from "../assets/brand_logo.png";
 import CommonInput from "../components/CommonInput";
 import CommonButton from "../components/CommonButton";
 
@@ -21,22 +21,26 @@ const Login = ({ login }) => {
 
   const updateFormValidity = (name, value) => {
     // Check form validity using the updated value directly from the event
-    if ((name === "email" && value.trim() && formData.password.trim()) || (name === "password" && value.trim() && formData.email.trim())) {
+    if (
+      (name === "email" && value.trim() && formData.password.trim()) ||
+      (name === "password" && value.trim() && formData.email.trim())
+    ) {
       setFormValid(true);
     } else {
       setFormValid(false);
     }
   };
 
-  const handleLogin = async (e) => { // Added async for potential async login operation
+  const handleLogin = async (e) => {
+    // Added async for potential async login operation
     e.preventDefault();
     setLoading(true); // Show loading indicator
     // Your login logic here
     // For demonstration purpose, let's assume authentication always fails
     setError("Invalid email or password.");
     setLoading(false); // Hide loading indicator after login attempt
-    console.log("Login", formData)
-    login()
+    console.log("Login", formData);
+    login();
   };
 
   if (redirectToDashboard) {
@@ -95,15 +99,29 @@ const Login = ({ login }) => {
                         {/* <!--Submit button--> */}
                         <div className="mb-6 md:mb-12 pb-1 pt-1 text-center">
                           <div className="w-full mb-2">
-                          <CommonButton type="submit" disabled={!formValid} className={formValid ? "w-full" : "w-full disabled:opacity-50"}>
-                                          Login
-                                      </CommonButton>
+                            <CommonButton
+                              type="submit"
+                              disabled={!formValid}
+                              className={
+                                formValid
+                                  ? "w-full"
+                                  : "w-full disabled:opacity-50"
+                              }
+                            >
+                              Login
+                            </CommonButton>
                           </div>
 
-                          <div className='flex justify-between' style={{ fontSize: "0.7rem" }}>
+                          <div
+                            className="flex justify-between"
+                            style={{ fontSize: "0.7rem" }}
+                          >
                             <motion.div
                               initial={{ opacity: 0, y: -10 }}
-                              animate={{ opacity: error ? 1 : 0, y: error ? 0 : -10 }}
+                              animate={{
+                                opacity: error ? 1 : 0,
+                                y: error ? 0 : -10,
+                              }}
                               transition={{ duration: 0.3 }}
                               className="text-red-500 w-1/2 text-left "
                             >
@@ -114,11 +132,7 @@ const Login = ({ login }) => {
                               className="text-right w-1/2 pr-1"
                               whileHover={{ scale: 1.05 }}
                             >
-                              <Link
-                                to="/"
-                              >
-                                Reset password?
-                              </Link>
+                              <Link to="/">Reset password?</Link>
                             </motion.div>
                           </div>
                         </div>

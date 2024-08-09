@@ -7,6 +7,28 @@ export const navItems = [
   { label: "Our team", href: "/team" },
 ];
 
+export const blogs = [
+  {
+    title: "Some title 1",
+    des: "Will try the things now",
+  },
+  {
+    title: "Some title 2",
+    des: "Will try the things now",
+  },
+  {
+    title: "Some title 3",
+    des: "Will try the things now",
+  },
+  {
+    title: "Some title 4",
+    des: "Will try the things now",
+  },
+  {
+    title: "Some title 5",
+    des: "Will try the things now",
+  },
+];
 
 export const teamMembers = [
   {
@@ -20,10 +42,12 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
   {
     name: "Ashley Jones",
@@ -36,10 +60,12 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
   {
     name: "Tess Brown",
@@ -52,10 +78,12 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
   {
     name: "Lisa Rose",
@@ -68,10 +96,12 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
   {
     name: "Kevin Nye",
@@ -84,10 +114,12 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
   {
     name: "Alex Young",
@@ -100,9 +132,11 @@ export const teamMembers = [
     },
     email: "don@vvma.com",
     phone: "1234567890",
-    address:  "500 Terry Francine Street, San Francisco, A 94158",
-    dob:'March 14th, 1984',
-    about: "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
-    moreAbout: "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement"
+    address: "500 Terry Francine Street, San Francisco, A 94158",
+    dob: "March 14th, 1984",
+    about:
+      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+    moreAbout:
+      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
   },
 ];

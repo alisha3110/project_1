@@ -21,7 +21,7 @@ const modal = {
   },
 };
 
-const Modal = ({ isOpen, onClose, member }) => {
+const Modal = ({ isOpen, onClose, children }) => {
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -32,7 +32,7 @@ const Modal = ({ isOpen, onClose, member }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 flex items-center justify-center bg-black bg-modal_bg modal_bg_css bg-opacity-50 z-50"
+          className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
           initial="hidden"
           animate="visible"
           exit="hidden"
@@ -50,56 +50,8 @@ const Modal = ({ isOpen, onClose, member }) => {
             >
               <X />
             </button>
-            <div className="w-full">
-              <div className="flex flex-col md:flex-row justify-start rounded-md border-b-2 border-black dark:border-gray-600 mb-6">
-                <div className="w-full md:w-3/5 lg:w-3/5 xl:w-2/5 h-auto">
-                  <img
-                    src={member.imageUrl}
-                    alt={member.name}
-                    className="w-full h-full object-cover rounded-md md:rounded-l-md"
-                  />
-                </div>
-                <div className="flex flex-col p-8 md:p-4 md:px-12 w-full">
-                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                    {member.name}
-                  </h2>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {member.role}
-                  </p>
-                  <div className="flex flex-wrap text-sm text-left">
-                    <p className="w-full md:w-1/2 lg:w-1/2 p-2 text-gray-800 dark:text-gray-200">
-                      <strong>Phone:</strong> <br />
-                      {member.phone}
-                    </p>
-                    <p className="w-full md:w-1/2 lg:w-1/2 p-2 text-gray-800 dark:text-gray-200">
-                      <strong>Email:</strong> <br />
-                      {member.email}
-                    </p>
-                    <p className="w-full md:w-1/2 lg:w-1/2 p-2 text-gray-800 dark:text-gray-200">
-                      <strong>Address:</strong> <br />
-                      {member.address}
-                    </p>
-                    <p className="w-full md:w-1/2 lg:w-1/2 p-2 text-gray-800 dark:text-gray-200">
-                      <strong>Date of Birth:</strong> <br />
-                      {member.dob}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="text-left p-8 md:px-12 pt-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  A Bit About Me
-                </h3>
-                <div className="md:max-h-60 overflow-y-auto">
-                  <p className="text-gray-600 dark:text-gray-300">
-                    {member.about}
-                  </p>
-                  <p className="text-gray-600 dark:text-gray-300 mt-2">
-                    {member.moreAbout}
-                  </p>
-                </div>
-              </div>
-            </div>
+            {/* Render children here */}
+            <div className="w-full p-4">{children}</div>
           </motion.div>
         </motion.div>
       )}
