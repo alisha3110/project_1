@@ -55,7 +55,7 @@ const Login = ({ login }) => {
       className="h-full flex flex-col items-center justify-center min_height"
     >
       <section className="">
-        <div className="container py-8 px-6 md:p-10">
+        <div className="container py-8 px-6 md:px-10 md:py-16">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">

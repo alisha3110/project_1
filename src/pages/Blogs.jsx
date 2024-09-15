@@ -15,11 +15,11 @@ const Blog = ({ blog, onClick }) => {
       <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <div className="flex">
           <img className="w-1/2  object-fit" src={logo} alt="" />
-          <div className="p-5 flex-1">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <div className="p-3 lg:p-5 flex-1">
+            <h5 className="mb-2 text-xl lg:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
               Noteworthy technology acquisitions 2021
             </h5>
-            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 w-full line-clamp-2">
+            <p className="mb-3 text-sm md:text-base text-gray-700 dark:text-gray-400 w-full line-clamp-2">
               Here are the biggest enterprise technology acquisitions of 2021 so
               far, in reverse chronological order.
             </p>
@@ -90,7 +90,7 @@ const Blogs = () => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center min_height"
     >
-      <section className="py-12 dark:bg-gray-900 w-full">
+      <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
             Here are our Blogs
@@ -160,7 +160,7 @@ const Blogs = () => {
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                   Title of the Carousel
                 </h2>
-                <div className="max-h-[200px] md:max-h-[300px] overflow-y-auto p-2 md:p-4">
+                <div className="overflow-y-auto p-2 md:p-4">
                   <p className="text-sm md:text-base text-gray-700">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Curabitur ac justo vel ligula tincidunt scelerisque. Duis a

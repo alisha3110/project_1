@@ -7,8 +7,10 @@ import CommonInput from "../components/CommonInput";
 import CommonSelect from "../components/CommonSelect";
 import CommonButton from "../components/CommonButton";
 
-const Register = ({ login }) => {
+const Register = () => {
   const [redirectToDashboard, setRedirectToDashboard] = useState(false);
+  const [error, setError] = useState(false);
+  const [matchError, setmatchError] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,7 +20,6 @@ const Register = ({ login }) => {
     secQues: "",
     secAns: "",
   });
-  const [error, setError] = useState("");
   const [formValid, setFormValid] = useState(false);
   const [loading, setLoading] = useState(false); // Added loading state
   const options = [
@@ -37,17 +38,31 @@ const Register = ({ login }) => {
     setFormData((prevFormData) => {
       // Update formData with the latest state
       const updatedFormData = { ...prevFormData, [name]: value };
-      setError(""); // Reset error message when user types
-      updateFormValidity(updatedFormData); // Pass the updated formData to updateFormValidity
+      let error;
+      if (name === "password" || name === "confirmPassword") {
+        error = checkPasswordMatch(
+          updatedFormData.password,
+          updatedFormData.confirmPassword
+        );
+      }
+      updateFormValidity(error); // Pass the updated formData to updateFormValidity
+      setmatchError(error);
       return updatedFormData; // Return the updated state
     });
   };
 
-  const updateFormValidity = (formData) => {
+  const checkPasswordMatch = (password, confirmPassword) => {
+    if (password && confirmPassword && password !== confirmPassword) {
+      return "Passwords do not match.";
+    } else {
+      return "";
+    }
+  };
+
+  const updateFormValidity = (error) => {
     // Check if all values are non-empty
-    const allValuesNonEmpty = Object.values(formData).every((value) =>
-      value.trim()
-    );
+    const allValuesNonEmpty =
+      Object.values(formData).every((value) => value.trim()) && !error;
 
     // Update form validity based on the result
     setFormValid(allValuesNonEmpty);
@@ -75,8 +90,8 @@ const Register = ({ login }) => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center justify-center min_height"
     >
-      <section className="" style={{ maxHeight: "calc(100vh - 73px)" }}>
-        <div className="container py-8 px-6 md:p-10">
+      <section className="">
+        <div className="container py-8 px-6 md:p-10 md:py-16">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
@@ -160,7 +175,7 @@ const Register = ({ login }) => {
                         />
                         <div className="flex flex-col sm:flex-row gap-0 sm:gap-4">
                           <CommonInput
-                            type="password"
+                            type="text"
                             name="password"
                             value={formData.password}
                             onChange={handleInputChange}
@@ -168,10 +183,12 @@ const Register = ({ login }) => {
                             required
                           />
                           <CommonInput
-                            type="password"
+                            type="text"
                             name="confirmPassword"
                             value={formData.confirmPassword}
                             onChange={handleInputChange}
+                            compareWith={{ value: formData.password }}
+                            passError={matchError}
                             label="Confirm Password"
                             required
                           />
@@ -189,8 +206,8 @@ const Register = ({ login }) => {
                               clipRule="evenodd"
                             ></path>
                           </svg>
-                          Use at least 8 characters, one uppercase, one
-                          lowercase and one number.
+                          Must be 8 characters with one uppercase, lowercase,
+                          number, and a special character.
                         </p>
                         <CommonSelect
                           name="secQues"

@@ -40,7 +40,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 py-3 border-b border-neutral-300/80 bg-theme-bg px-6 shadow-lg ${
+      className={` top-0 z-50 py-3 border-b border-neutral-300/80 bg-theme-bg px-6 shadow-lg ${
         isScrolled ? "bg-opacity-90" : ""
       }`}
     >

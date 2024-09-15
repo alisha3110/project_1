@@ -70,12 +70,12 @@ const Team = () => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center justify-center min_height"
     >
-      <section className="py-12 dark:bg-gray-900">
+      <section className="py-16 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
             Meet The Team
           </h2>
-          <div className="flex flex-wrap -mx-4">
+          <div className="flex flex-wrap">
             {teamMembers.map((member) => (
               <TeamMember
                 key={member.name}
