@@ -95,6 +95,15 @@ const Blogs = () => {
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
             Here are our Blogs
           </h2>
+          <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
+            <p>
+              As part of VVMA’s mission to revolutionize global healthcare, our
+              blog serves as a platform for sharing in-depth research and weekly
+              articles on critical health issues. We explore the challenges and
+              disparities within the healthcare system and offer insights into
+              how we can bridge these gaps.
+            </p>
+          </div>
           <div className="flex flex-wrap">
             {blogs.map((blog) => (
               <Blog key={blog.title} blog={blog} onClick={openModal} />

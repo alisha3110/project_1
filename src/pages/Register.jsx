@@ -120,11 +120,11 @@ const Register = () => {
                         We are more than just a company
                       </h4>
                       <p className="text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
+                        Through our unwavering commitment to innovation,
+                        collaboration, and compassion, we are poised to catalyze
+                        lasting change in communities worldwide. Together, let
+                        us build a future where healthcare is a universal right,
+                        not a privilege, for all.
                       </p>
                     </div>
                   </div>

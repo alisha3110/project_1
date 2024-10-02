@@ -75,6 +75,14 @@ const Team = () => {
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
             Meet The Team
           </h2>
+          <p className="w-[80vw] md:w-[60vw] m-auto text-center text-gray-600 text-sm md:text-base mt-2 pb-8">
+            Vital Voices stands at the forefront of a transformative movement to
+            redefine healthcare accessibility and equity. Through our unwavering
+            commitment to innovation, collaboration, and compassion, we are
+            poised to catalyze lasting change in communities worldwide.
+            Together, let us build a future where healthcare is a universal
+            right, not a privilege, for all.
+          </p>
           <div className="flex flex-wrap">
             {teamMembers.map((member) => (
               <TeamMember
