@@ -40,7 +40,7 @@ const Modal = ({ isOpen, onClose, children }) => {
           onClick={handleBackdropClick}
         >
           <motion.div
-            className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 max-h-[90vh] min-h-[90vh] overflow-y-auto"
+            className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 max-h-[90vh] min-h-auto overflow-y-auto"
             variants={modal}
             onClick={(e) => e.stopPropagation()}
           >

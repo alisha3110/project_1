@@ -8,12 +8,12 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="text-center">
           <ul className="text-gray-600 flex gap-12 items-center justify-center">
-            <Link
+            {/* <Link
               to="/register"
               className="hover:text-black transition duration-200"
             >
               Join Us
-            </Link>
+            </Link> */}
             <Link
               to="/blog"
               className="hover:text-black transition duration-200"
