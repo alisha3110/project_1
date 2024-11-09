@@ -66,14 +66,20 @@ const Team = () => {
           "https://project-1-be.onrender.com/auth/users"
         );
         setTeamMembers(response.data.sort((x, y) => x.id - y.id));
+        sessionStorage.setItem(
+          "team-members",
+          JSON.stringify(response.data.sort((x, y) => x.id - y.id))
+        );
         setLoading(false);
       } catch (error) {
         setError("Failed to fetch team members");
         setLoading(false);
       }
     };
-
-    fetchTeamMembers();
+    if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
+    else {
+      setTeamMembers(JSON.parse(sessionStorage.getItem("team-members")) || []);
+    }
   }, []);
 
   if (error) {

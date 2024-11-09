@@ -14,6 +14,13 @@ const Blog = ({ blog, onClick, onLike }) => {
 
   const isLiked = sessionStorage.getItem(`liked_${blog.id}`) === "true";
 
+  const getFullName = (id) => {
+    const teamMembers =
+      JSON.parse(sessionStorage.getItem("team-members")) || [];
+    const person = teamMembers.find((obj) => obj.id === id);
+    return person ? `${person.firstName} ${person.lastName}` : "One of us!";
+  };
+
   const handleLike = async (event) => {
     event.stopPropagation();
     const newLikeState = !isLiked;
@@ -46,11 +53,19 @@ const Blog = ({ blog, onClick, onLike }) => {
             alt="Blog Image"
           />
           <div className="p-3 lg:p-5 flex-1">
-            <h5 className="mb-2 text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {blog.title}
             </h5>
+            <p className="mb-2 text-xs float-right">
+              {" "}
+              - By {getFullName(blog.submittedBy)}
+            </p>
             <p className="mb-3 text-sm md:text-base text-gray-700 dark:text-gray-400 w-full line-clamp-2">
-              {blog.content.slice(0, 100)}...
+              {blog.content
+                .replaceAll("<p>", "")
+                .replaceAll("</p>", "")
+                .slice(0, 100)}
+              ...
             </p>
           </div>
         </div>
@@ -95,13 +110,26 @@ const Blogs = () => {
           "https://project-1-be.onrender.com/blogs"
         );
         setBlogs(response.data);
-        setLoading(false);
       } catch (err) {
         setError("Failed to fetch blogs");
-        setLoading(false);
       }
     };
-
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await axios.get(
+          "https://project-1-be.onrender.com/auth/users"
+        );
+        sessionStorage.setItem(
+          "team-members",
+          JSON.stringify(response.data.sort((x, y) => x.id - y.id))
+        );
+        setLoading(false);
+      } catch (error) {
+        console.log("Failed to fetch team members");
+      }
+    };
+    if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
+    else setLoading(false);
     fetchBlogs();
   }, []);
 
@@ -167,6 +195,13 @@ const Blogs = () => {
     }
   };
 
+  const getFullName = (id) => {
+    const teamMembers =
+      JSON.parse(sessionStorage.getItem("team-members")) || [];
+    const person = teamMembers.find((obj) => obj.id === id);
+    return person ? `${person.firstName} ${person.lastName}` : "One of us!";
+  };
+
   if (error) {
     return <div>{error}</div>;
   }
@@ -214,14 +249,16 @@ const Blogs = () => {
             </div>
           ) : (
             <div className="flex flex-wrap">
-              {blogs.map((blog) => (
-                <Blog
-                  key={blog.id}
-                  blog={blog}
-                  onClick={openModal}
-                  onLike={handleLikeUpdate}
-                />
-              ))}
+              {blogs
+                .sort((a, b) => a.id - b.id)
+                .map((blog) => (
+                  <Blog
+                    key={blog.id}
+                    blog={blog}
+                    onClick={openModal}
+                    onLike={handleLikeUpdate}
+                  />
+                ))}
             </div>
           )}
         </div>
@@ -243,11 +280,16 @@ const Blogs = () => {
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                   {selectedBlog.title}
                 </h2>
-                <div className="overflow-y-auto p-2 md:p-4">
-                  <p className="text-sm md:text-base text-gray-700">
-                    {selectedBlog.content}
-                  </p>
+                <div className="overflow-y-auto p-2">
+                  <p
+                    className="text-sm md:text-base text-gray-700 content-p-tag"
+                    dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+                  ></p>
                 </div>
+                <p className="mt-2 text-xs float-right">
+                  {" "}
+                  - By {getFullName(selectedBlog.submittedBy)}
+                </p>
               </div>
 
               {/* Comments Section */}
