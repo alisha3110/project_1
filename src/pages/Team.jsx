@@ -79,6 +79,7 @@ const Team = () => {
     if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
     else {
       setTeamMembers(JSON.parse(sessionStorage.getItem("team-members")) || []);
+      setLoading(false);
     }
   }, []);
 
