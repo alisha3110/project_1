@@ -17,7 +17,9 @@ import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Footer";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    sessionStorage.getItem("user")
+  );
 
   // A function to simulate login, replace with actual login logic
   const login = () => {
@@ -26,6 +28,7 @@ function App() {
 
   // A function to simulate logout, replace with actual logout logic
   const logout = () => {
+    sessionStorage.clear();
     setIsAuthenticated(false);
   };
 

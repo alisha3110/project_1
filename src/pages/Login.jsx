@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import logo from "../assets/brand_logo.png";
 import CommonInput from "../components/CommonInput";
 import CommonButton from "../components/CommonButton";
+import axios from "axios";
 
 const Login = ({ login }) => {
   const [redirectToDashboard, setRedirectToDashboard] = useState(false);
@@ -32,15 +33,29 @@ const Login = ({ login }) => {
   };
 
   const handleLogin = async (e) => {
-    // Added async for potential async login operation
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     setLoading(true); // Show loading indicator
-    // Your login logic here
-    // For demonstration purpose, let's assume authentication always fails
-    setError("Invalid email or password.");
-    setLoading(false); // Hide loading indicator after login attempt
-    console.log("Login", formData);
-    login();
+
+    try {
+      const { data } = await axios.post(
+        "https://project-1-be.onrender.com/auth/login",
+        formData
+      );
+      console.log(data);
+
+      if (data.token) {
+        sessionStorage.setItem("user", JSON.stringify(data)); // Store user data in sessionStorage
+        login(); // Trigger login callback
+        setRedirectToDashboard(true); // Trigger redirect to dashboard
+      } else {
+        setError("Invalid email or password."); // Handle invalid login
+      }
+    } catch (error) {
+      console.error("Login error", error); // Log the error for debugging
+      setError(error.response.data.message);
+    } finally {
+      setLoading(false); // Hide loading indicator
+    }
   };
 
   if (redirectToDashboard) {
@@ -93,6 +108,7 @@ const Login = ({ login }) => {
                           value={formData.password}
                           onChange={handleInputChange}
                           label="Password"
+                          disableVaidation="true"
                           required
                         />
 
@@ -101,14 +117,14 @@ const Login = ({ login }) => {
                           <div className="w-full mb-2">
                             <CommonButton
                               type="submit"
-                              disabled={!formValid}
+                              disabled={loading ? true : !formValid}
                               className={
-                                formValid
+                                !loading && formValid
                                   ? "w-full"
                                   : "w-full disabled:opacity-50"
                               }
                             >
-                              Login
+                              {loading ? "Please wait..!!" : "Login"}
                             </CommonButton>
                           </div>
 
@@ -132,12 +148,12 @@ const Login = ({ login }) => {
                               className="text-right w-1/2 pr-1"
                               whileHover={{ scale: 1.05 }}
                             >
-                              <Link to="/">Reset password?</Link>
+                              {/* <Link to="/">Reset password?</Link> */}
                             </motion.div>
                           </div>
                         </div>
                       </form>
-                      <div className="flex items-center justify-between pb-6">
+                      {/* <div className="flex items-center justify-between pb-6">
                         <p className="mb-0 mr-2">Interested to Join us?</p>
                         <div>
                           <Link to="/register">
@@ -149,7 +165,7 @@ const Login = ({ login }) => {
                             </button>
                           </Link>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
 

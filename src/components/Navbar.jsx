@@ -85,9 +85,9 @@ const Navbar = ({ isAuthenticated, logout }) => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center justify-center"
               >
-                {/* <Link to="/login">
+                <Link to="/login">
                   <CommonButton>Log In</CommonButton>
-                </Link> */}
+                </Link>
               </motion.div>
             )}
           </div>

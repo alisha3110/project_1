@@ -148,12 +148,12 @@ const Home = () => {
           </div>
         </section>
 
-        <div class="relative my-8">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-4/5 m-auto  border-t border-gray-300"></div>
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-4/5 m-auto  border-t border-gray-300"></div>
           </div>
-          <div class="relative flex justify-center">
-            <span class="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
+          <div className="relative flex justify-center">
+            <span className="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
               &#x2618;
             </span>
           </div>
@@ -207,12 +207,12 @@ const Home = () => {
           </div>
         </section>
 
-        <div class="relative my-8">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-4/5 m-auto  border-t border-gray-300"></div>
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-4/5 m-auto  border-t border-gray-300"></div>
           </div>
-          <div class="relative flex justify-center">
-            <span class="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
+          <div className="relative flex justify-center">
+            <span className="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
               &#x2618;
             </span>
           </div>
@@ -266,12 +266,12 @@ const Home = () => {
           </div>
         </section>
 
-        <div class="relative my-8">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-4/5 m-auto border-t border-gray-300"></div>
+        <div className="relative my-8">
+          <div className="absolute inset-0 flex items-center">
+            <div className="w-4/5 m-auto border-t border-gray-300"></div>
           </div>
-          <div class="relative flex justify-center">
-            <span class="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
+          <div className="relative flex justify-center">
+            <span className="px-3 bg-white text-lg font-medium text-gray-500 rounded-lg">
               &#x2618;
             </span>
           </div>
