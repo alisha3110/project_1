@@ -25,25 +25,25 @@ const PrevArrow = ({ onClick }) => (
 const Carousel = ({ images }) => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: images.length > 1,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false, // Enable autoplay only if there's more than one image
     autoplaySpeed: 3000,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative h-[50vh]">
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
             <img
               src={image}
               alt={`Slide ${index}`}
-              className="w-full object-cover rounded-lg"
+              className="w-full object-contain rounded-lg h-[50vh]"
             />
           </div>
         ))}

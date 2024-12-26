@@ -13,6 +13,7 @@ const CommonInput = ({
   hideLabel,
   customClass,
   placeholder,
+  readOnly,
 }) => {
   const [error, setError] = useState("");
 
@@ -36,6 +37,12 @@ const CommonInput = ({
     if (error || !value.length) handleBlur(e);
 
     onChange(e);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Disable Enter key action
+    }
   };
 
   const handleBlur = (e) => {
@@ -74,7 +81,9 @@ const CommonInput = ({
         type={type}
         name={name}
         value={value}
+        onKeyDown={handleKeyDown} // Disable Enter key
         onChange={handleInputChange}
+        readOnly={readOnly}
         onBlur={handleBlur} // Handle validation on blur
         className={`peer w-full h-full bg-transparent ${
           error

@@ -46,7 +46,7 @@ const Blog = ({ blog, onClick, onLike }) => {
       onClick={() => onClick(blog)}
     >
       <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-h-[300px] max-h-full md:max-h-[300px] flex flex-col">
-        <div className="flex grow flex-col md:flex-row">
+        <div className="flex grow flex-col md:flex-row overflow-hidden">
           <img
             className="w-full md:w-1/2 object-fit"
             src={firstImage}
@@ -109,7 +109,8 @@ const Blogs = () => {
         const response = await axios.get(
           "https://project-1-be.onrender.com/blogs"
         );
-        setBlogs(response.data);
+        setBlogs(response.data.filter((x) => x.status == 1));
+        setLoading(false);
       } catch (err) {
         setError("Failed to fetch blogs");
       }
@@ -129,7 +130,6 @@ const Blogs = () => {
       }
     };
     if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
-    else setLoading(false);
     fetchBlogs();
   }, []);
 
@@ -271,9 +271,11 @@ const Blogs = () => {
           >
             <div className="relative flex flex-col items-center m-4">
               {/* Carousel */}
-              <div className="w-full md:w-2/3">
-                <Carousel images={selectedBlog.imageurls} />
-              </div>
+              {selectedBlog.imageurls.length ? (
+                <div className="w-full md:w-2/3">
+                  <Carousel images={selectedBlog.imageurls} />
+                </div>
+              ) : null}
 
               {/* Title and Scrollable Description */}
               <div className="p-4 md:p-6 mt-6 bg-gray-100 rounded-lg shadow-lg w-full ">
