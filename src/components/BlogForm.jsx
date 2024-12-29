@@ -89,7 +89,7 @@ const BlogFormWithImages = ({ blogData = {}, onSave, goback }) => {
       setLoading(true);
       const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
       const response = await axios.put(
-        `http://localhost:5000/blogs/update/${formData.id}`,
+        `https://project-1-be.onrender.com/blogs/update/${formData.id}`,
         payload,
         {
           headers: {

@@ -115,7 +115,7 @@ const Dashboard = () => {
       setCreateLoading(true);
       const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
       const response = await axios.post(
-        `http://localhost:5000/blogs`,
+        `https://project-1-be.onrender.com/blogs`,
         newBlog,
         {
           headers: {
