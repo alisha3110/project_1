@@ -216,15 +216,16 @@ const Blogs = () => {
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            Here are our Blogs
+            VVMA IS A VOICE FOR EQUALIZING MEDICINE
           </h2>
           <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
             <p>
-              As part of VVMA’s mission to revolutionize global healthcare, our
-              blog serves as a platform for sharing in-depth research and weekly
-              articles on critical health issues. We explore the challenges and
-              disparities within the healthcare system and offer insights into
-              how we can bridge these gaps.
+              At VVMA, our blog is more than just a platform—it's a resource for
+              change. Through in-depth and researched articles, we dive into
+              critical health issues, exploring the challenges and disparities
+              that exist in global healthcare along with exciting new medical
+              technologies. Join us as we share actionable insights and inspire
+              solutions to bridge the gaps and promote health equity for all.
             </p>
           </div>
           {loading ? (

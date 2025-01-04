@@ -18,6 +18,21 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
+    const fetchTeamMembers = async () => {
+      try {
+        const response = await axios.get(
+          "https://project-1-be.onrender.com/auth/users"
+        );
+        sessionStorage.setItem(
+          "team-members",
+          JSON.stringify(response.data.sort((x, y) => x.id - y.id))
+        );
+        setLoading(false);
+      } catch (error) {
+        console.log("Failed to fetch team members");
+      }
+    };
+    if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
     fetchBlogs();
   }, []);
 

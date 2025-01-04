@@ -114,12 +114,6 @@ const BlogFormWithImages = ({ blogData = {}, onSave, goback }) => {
     }, 2000);
   };
 
-  const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Disable Enter key action
-    }
-  };
-
   const [newComment, setNewComment] = useState("");
 
   const handleAddComment = () => {
@@ -162,7 +156,7 @@ const BlogFormWithImages = ({ blogData = {}, onSave, goback }) => {
         <h2 className="text-2xl font-bold mb-4 mt-2">
           {blogData.id ? "Edit Blog" : "Add Blog"}
         </h2>
-        <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
+        <form>
           {/* Form Inputs */}
           <div className="flex gap-4">
             <CommonInput
@@ -385,7 +379,7 @@ const BlogFormWithImages = ({ blogData = {}, onSave, goback }) => {
           {/* Submit Button */}
           <div className="text-center">
             <CommonButton
-              type="submit"
+              onClick={handleSubmit}
               className={!loading ? "" : " disabled:opacity-50"}
               disabled={loading}
             >

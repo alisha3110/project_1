@@ -22,7 +22,6 @@ const CommonInput = ({
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
   useEffect(() => {
-    console.log("ys", passError);
     setError(passError);
   }, [passError]);
 

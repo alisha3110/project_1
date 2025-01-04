@@ -2,7 +2,8 @@ import CommonButton from "../components/CommonButton";
 import CommonInput from "../components/CommonInput";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import logo from "../assets/modal_bg.jpeg";
+import logo from "../assets/home_bg.jpg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const Home = () => {
     lname: "",
     email: "",
   });
+  const navigate = useNavigate();
 
   // State to manage form validity
   const [formValid, setFormValid] = useState(false);
@@ -52,6 +54,10 @@ const Home = () => {
     }
   };
 
+  const tabCLickHanlder = (route) => {
+    navigate(`/${route}`);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -61,20 +67,25 @@ const Home = () => {
     >
       <div>
         {/* Hero Section with Background Image */}
-        <div
-          className="relative bg-cover bg-center h-[70vh] flex flex-col items-center justify-center text-center"
-          style={{
-            backgroundImage: `url(${logo})`, // Adjust the image URL
-          }}
-        >
+        <div className="relative bg-cover bg-center h-[70vh] flex flex-col items-center justify-center text-center">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${logo})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              filter: "blur(2px)",
+              zIndex: 0,
+            }}
+          ></div>
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          <h1 className="relative z-10 text-white text-4xl font-bold sm:text-5xl md:text-6xl p-6">
+          <p className="relative z-10 text-white text-4xl font-bold sm:text-5xl md:text-6xl p-6">
             Vital Voices :
-            <div className="pt-4">Medical Advocacy (VVMA) Business Model</div>
-          </h1>
-          <p className="text-white max-w-[90vw] md:max-w-[70vw]">
-            VVMA is a pioneering youth-led organization dedicated to
-            revolutionizing global healthcare accessibility.
+            <span className="pt-4 block">Vital Voices Medical Advocacy</span>
+          </p>
+          <p className="relative text-white max-w-[90vw] md:max-w-[70vw]">
+            VVMA is a trailblazing youth-led organization focused on reshaping
+            global healthcare to make it accessible for everyone, everywhere.
           </p>
         </div>
 
@@ -82,19 +93,16 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <p className="px-4 md:px-8 text-gray-600">
-                VVMA is a pioneering youth-led organization dedicated to
-                revolutionizing global healthcare accessibility. Our mission is
-                clear: to foster equality within the healthcare industry
-                worldwide. We achieve this through our multifaceted approach,
-                centered on our informative blog featuring research entries and
-                weekly articles on pressing health issues. Additionally, we
-                conduct service projects in underserved rural communities,
-                providing comprehensive medical education, advocacy campaigns,
-                and sustainable support initiatives. Through strategic
-                partnerships and innovative programs, we are committed to
-                eliminating healthcare disparities and ensuring equitable access
-                to quality healthcare for all, regardless of socio-economic
-                status or geographic location.
+                VVMA is a bold movement revolutionizing global healthcare. Our
+                mission? To break barriers and create a world where quality
+                healthcare is accessible to all. We do this through two powerful
+                avenues: hands-on health service projects in underserved
+                communities, bringing education, support, and medical aid to
+                those who need it most, and our advocacy platform—a space for
+                cutting-edge blogs on the latest healthcare news, breakthroughs,
+                and the fight for public health equality. With every project and
+                post, we’re sparking change, challenging norms, and paving the
+                way for a healthier, more equitable future.
               </p>
             </div>
           </div>
@@ -108,20 +116,21 @@ const Home = () => {
                 Objectives
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
-                To catalyze transformative change in rural healthcare ecosystems
-                globally, leveraging education, advocacy, and strategic
-                partnerships to foster sustainable health equity.
+                We aim to drive transformative change in global healthcare by
+                focusing on education, advocacy, and compassionate support to
+                create sustainable health equity.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto">
               <div className="bg-white rounded-lg shadow-md p-6 text-center ">
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Education
+                  Healthcare Education
                 </h3>
                 <p className="text-gray-600">
-                  Deliver medical education programs, including CPR training and
-                  essential skills workshops, in underserved communities to
-                  empower rural populations.
+                  Deliver essential medical education, including CPR training
+                  and practical workshops, to empower underserved rural
+                  communities with the knowledge and skills to improve their
+                  health.
                 </p>
               </div>
               <div className="bg-white rounded-lg shadow-md p-6 text-center ">
@@ -129,9 +138,9 @@ const Home = () => {
                   Leadership in Advocacy
                 </h3>
                 <p className="text-gray-600">
-                  Drive impactful advocacy entries in a blog style manner
-                  through a dynamic online platform, amplifying awareness of
-                  critical global healthcare issues.
+                  Use our dynamic online platform to raise awareness on critical
+                  global healthcare issues, advocating for change and inspiring
+                  action to promote public health equality.
                 </p>
               </div>
               <div className="bg-white rounded-lg shadow-md p-6 text-center ">
@@ -139,9 +148,9 @@ const Home = () => {
                   Compassionate Support
                 </h3>
                 <p className="text-gray-600">
-                  Partner with local healthcare providers to distribute vital
-                  care packages and resources to patients facing medical
-                  challenges.
+                  Collaborate with local healthcare providers to distribute
+                  vital care packages and resources, offering direct support to
+                  patients facing medical challenges.
                 </p>
               </div>
             </div>
@@ -164,7 +173,7 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-6 md:text-4xl">
-                Products and Services
+                Services
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
                 Empowering communities with CPR workshops, an advocacy platform
@@ -172,37 +181,50 @@ const Home = () => {
                 patients in need.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto">
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto ">
+              <motion.div
+                className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer"
+                onClick={() => tabCLickHanlder("blog")}
+                whileHover={{ scale: 1.01 }}
+              >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
                   Empowering Workshops
                 </h3>
                 <p className="text-gray-600">
-                  Tailored workshops and training sessions to equip community
-                  members with life-saving CPR techniques and essential medical
-                  skills.
+                  We offer tailored workshops and training sessions that equip
+                  community members with life-saving skills and essential
+                  medical knowledge, empowering them to make a difference in
+                  their communities.
                 </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+              </motion.div>
+              <motion.div
+                className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer"
+                onClick={() => tabCLickHanlder("blog")}
+                whileHover={{ scale: 1.01 }}
+              >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
                   Advocacy Platform
                 </h3>
                 <p className="text-gray-600">
-                  An engaging online hub featuring informative articles,
-                  multimedia content, and interactive resources to foster
-                  awareness and drive action on pressing healthcare issues.
+                  Our online hub serves as a space for raising awareness on
+                  critical healthcare issues. Through informative articles,
+                  multimedia content, and interactive resources, we engage the
+                  public and inspire action toward better healthcare equality.
                 </p>
-              </div>
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+              </motion.div>
+              <motion.div
+                className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer"
+                onClick={() => tabCLickHanlder("blog")}
+                whileHover={{ scale: 1.01 }}
+              >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
                   Compassionate Care Packages
                 </h3>
                 <p className="text-gray-600">
-                  Collaborative initiatives with local healthcare institutions
-                  to provide essential care packages and resources to patients
-                  in need.
+                  We aim to deliver care packages and essential resources to
+                  support patients facing medical challenges
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -219,7 +241,7 @@ const Home = () => {
         </div>
 
         {/* Sustainability and Growth Section */}
-        <section className="py-12">
+        {/* <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-6 md:text-4xl">
@@ -264,9 +286,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
-        <div className="relative my-8">
+        {/* <div className="relative my-8">
           <div className="absolute inset-0 flex items-center">
             <div className="w-4/5 m-auto border-t border-gray-300"></div>
           </div>
@@ -275,7 +297,7 @@ const Home = () => {
               &#x2618;
             </span>
           </div>
-        </div>
+        </div> */}
 
         {/* Marketting Section */}
         <section className="py-12">
@@ -299,7 +321,7 @@ const Home = () => {
         <section className="mx-auto max-w-[95vw] md:max-w-[80vw]  bg-gray-100  bg-gray-100 p-8 rounded-lg shadow-lg mb-16">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Get a Free Quote
+              Get Involved Now!
             </h2>
             <p className="mb-6">
               Let us build a future where healthcare is a universal right
@@ -346,7 +368,7 @@ const Home = () => {
                         formValid ? "w-full" : "w-full disabled:opacity-50"
                       }
                     >
-                      Get a Quote
+                      Submit
                     </CommonButton>
                   </div>
                 </div>

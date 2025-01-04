@@ -1,4 +1,6 @@
 import logo from "../assets/modal_bg.jpeg";
+import logo1 from "../assets/brand_logo.png";
+import logo2 from "../assets/about_2.png";
 import { motion } from "framer-motion";
 
 export default function About() {
@@ -19,18 +21,17 @@ export default function About() {
             About
           </h2>
           <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
-            VVMA is a pioneering youth-led organization dedicated to
-            revolutionizing global healthcare accessibility. Our mission is
-            clear: to foster equality within the healthcare industry worldwide.
-            We achieve this through our multifaceted approach, centered on our
-            informative blog featuring research entries and weekly articles on
-            pressing health issues. Additionally, we conduct service projects in
-            underserved rural communities, providing comprehensive medical
-            education, advocacy campaigns, and sustainable support initiatives.
-            Through strategic partnerships and innovative programs, we are
-            committed to eliminating healthcare disparities and ensuring
-            equitable access to quality healthcare for all, regardless of
-            socio-economic status or geographic location.
+            VVMA is a youth-led organization breaking barriers in global
+            healthcare accessibility. Our mission is rooted in creating
+            equitable opportunities for communities often left behind. We
+            combine thoughtful advocacy with hands-on action, sharing impactful
+            research and weekly articles on pressing health issues through our
+            blog. Beyond raising awareness, we’re on the ground in underserved
+            rural areas, delivering medical education, driving advocacy
+            initiatives, and building sustainable support systems. Through
+            collaboration and innovative programs, we’re working toward a future
+            where quality healthcare is a universal reality, no matter your
+            background or location.
           </p>
         </div>
 
@@ -39,7 +40,7 @@ export default function About() {
           {/* Image on the left */}
           <div className="flex items-center justify-center">
             <img
-              src={logo} // Placeholder image path, replace with the actual image path
+              src={logo1} // Placeholder image path, replace with the actual image path
               alt="Mission Image"
               className="w-full h-auto object-cover shadow-lg rounded-lg"
             />
@@ -51,9 +52,9 @@ export default function About() {
               Mission
             </h3>
             <p className="text-gray-600 text-sm md:text-base">
-              To catalyze transformative change in rural healthcare ecosystems
-              globally, leveraging education, advocacy, and strategic
-              partnerships to foster sustainable health equity.
+              To drive transformative change in healthcare worldwide by
+              leveraging education, advocacy, and strategic partnerships to
+              build sustainable health equity.
             </p>
           </div>
 
@@ -65,16 +66,16 @@ export default function About() {
               Vision
             </h3>
             <p className="text-gray-600 text-sm md:text-base">
-              To pioneer a shift in global healthcare, where every individual
-              enjoys equal access to life-saving medical resources, knowledge
-              and services.
+              To inspire a global healthcare system where every individual has
+              equal access to life-saving medical resources, knowledge, and
+              services.
             </p>
           </div>
 
           {/* Image on the right */}
           <div className="flex items-center justify-center">
             <img
-              src={logo} // Placeholder image path, replace with the actual image path
+              src={logo2} // Placeholder image path, replace with the actual image path
               alt="Vision Image"
               className="w-full h-auto object-cover shadow-lg rounded-lg"
             />
@@ -100,8 +101,8 @@ export default function About() {
                 Marketing and Outreach
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
-                Empowering communities with CPR workshops, an advocacy platform
-                for healthcare awareness, and compassionate care packages for
+                Empowering communities with workshops, an advocacy platform for
+                healthcare awareness, and compassionate care packages for
                 patients in need.
               </p>
             </div>
