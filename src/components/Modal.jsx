@@ -21,11 +21,17 @@ const modal = {
   },
 };
 
-const Modal = ({ isOpen, onClose, children }) => {
+const Modal = ({ isOpen, onClose, children, size = "medium" }) => {
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const sizeClasses = {
+    small: "w-1/3", // Small size
+    medium: "w-1/2", // Medium size (default)
+    large: "w-3/4", // Large size
   };
 
   return (
@@ -40,8 +46,9 @@ const Modal = ({ isOpen, onClose, children }) => {
           onClick={handleBackdropClick}
         >
           <motion.div
-            className="relative bg-white dark:bg-gray-800 rounded-lg shadow-lg w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 max-h-[90vh] min-h-auto overflow-y-auto"
+            className={`relative bg-white dark:bg-gray-800 rounded-lg shadow-lg max-h-[90vh] min-h-auto overflow-y-auto ${sizeClasses[size]}`}
             variants={modal}
+            size="small"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -50,7 +57,6 @@ const Modal = ({ isOpen, onClose, children }) => {
             >
               <X />
             </button>
-            {/* Render children here */}
             <div className="w-full p-4">{children}</div>
           </motion.div>
         </motion.div>

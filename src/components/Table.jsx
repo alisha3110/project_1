@@ -21,10 +21,13 @@ const Table = ({ headers, rows, actions, columnWidths = [], sortKey }) => {
       .includes(searchQuery.toLowerCase())
   );
 
-  const truncateText = (text, maxLength = 50) =>
-    text.length > maxLength
-      ? text.replaceAll("<p>", "").replaceAll("</p>", "").slice(0, 70) + "..."
-      : text;
+  const sanitizeAndTruncate = (htmlContent, maxLength = 50) => {
+    // Strip HTML tags and truncate text
+    const plainText = htmlContent.replace(/<\/?[^>]+(>|$)/g, "");
+    return plainText.length > maxLength
+      ? plainText.slice(0, maxLength) + "..."
+      : plainText;
+  };
 
   return (
     <div className="overflow-x-auto">
@@ -79,17 +82,20 @@ const Table = ({ headers, rows, actions, columnWidths = [], sortKey }) => {
                   className="px-4 py-3 text-gray-700 text-sm lg:text-base"
                 >
                   {key === "content"
-                    ? truncateText(value.toString(), 50)
+                    ? sanitizeAndTruncate(value.toString())
                     : value}
                 </td>
               ))}
               {actions && (
-                <td className="px-4 py-3 text-center">
+                <td className="flex px-4 py-3 text-center">
                   {actions.map((action, actionIndex) => (
                     <button
                       key={actionIndex}
-                      className="px-3 py-1 mx-2 text-xs font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
-                      onClick={() => action.onClick(row)}
+                      className={
+                        "px-3 py-1 mx-2 text-xs font-semibold rounded-lg shadow-md transition-transform transform hover:scale-105 bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700" +
+                          action.className || ""
+                      }
+                      onClick={() => action.onClick(row, action.type)}
                     >
                       {action.label}
                     </button>

@@ -3,49 +3,31 @@ import { motion } from "framer-motion";
 import Tabs from "../components/Tabs";
 import Table from "../components/Table";
 import BlogForm from "../components/BlogForm"; // Import the form component
+import UserForm from "../components/UserForm"; // Import the form component
 import axios from "axios";
 import CommonButton from "../components/CommonButton";
 import Modal from "../components/Modal";
 import CommonInput from "../components/CommonInput";
 
 const Dashboard = () => {
-  const headers = ["ID", "Title", "Content"];
+  const blogHeaders = ["ID", "Title", "Content"];
+  const userHeaders = ["ID", "Name", "Designation", "Role"];
   const [blogs, setBlogs] = useState([]);
+  const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [createLoading, setCreateLoading] = useState(false);
   const [newBlog, setNewBlog] = useState(null);
+  const [newUser, setNewUser] = useState(null);
   const [selectedBlog, setSelectedBlog] = useState(null); // Track selected blog for editing
-  const [isEditing, setIsEditing] = useState(false);
-
-  useEffect(() => {
-    const fetchTeamMembers = async () => {
-      try {
-        const response = await axios.get(
-          "https://project-1-be.onrender.com/auth/users"
-        );
-        sessionStorage.setItem(
-          "team-members",
-          JSON.stringify(response.data.sort((x, y) => x.id - y.id))
-        );
-        setLoading(false);
-      } catch (error) {
-        console.log("Failed to fetch team members");
-      }
-    };
-    if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
-    fetchBlogs();
-  }, []);
-
-  const openModal = () => {
-    setNewBlog({
-      title: "New Blog Title",
-      content:
-        "Dummy content Dummy content Dummy content Dummy content Dummy content",
-    });
-  };
+  const [selectedUser, setSelectedUser] = useState(null); // Track selected blog for editing
+  const [isBlogEditing, setIsBlogEditing] = useState(false);
+  const [isUserEditing, setIsUserEditing] = useState(false);
+  const [isDelModeEnabled, setIsDelModeEnabled] = useState("");
 
   const closeModal = () => {
     setNewBlog(null);
+    setNewUser(null);
+    setIsDelModeEnabled("");
   };
 
   const fetchBlogs = async () => {
@@ -54,7 +36,7 @@ const Dashboard = () => {
       const response = await axios.get(
         "https://project-1-be.onrender.com/blogs"
       );
-      setBlogs(response.data);
+      setBlogs(response.data.filter((x) => x.status !== 3));
     } catch (err) {
       console.error("Failed to fetch blogs");
     } finally {
@@ -62,24 +44,83 @@ const Dashboard = () => {
     }
   };
 
-  const handleEditClick = (row) => {
-    const blogToEdit = blogs.find((blog) => blog.id === row.id);
-    setSelectedBlog(blogToEdit);
-    setIsEditing(true);
+  const fetchTeamMembers = async () => {
+    try {
+      const response = await axios.get(
+        "https://project-1-be.onrender.com/auth/users"
+      );
+      sessionStorage.setItem(
+        "team-members",
+        JSON.stringify(response.data.sort((x, y) => x.id - y.id))
+      );
+      setLoading(false);
+      setUsers(response.data);
+    } catch (error) {
+      console.log("Failed to fetch team members");
+    }
   };
 
-  const handleSave = (updatedBlog) => {
-    // Update the blog list with the edited blog
-    setBlogs((prevBlogs) =>
-      prevBlogs.map((blog) => (blog.id === updatedBlog.id ? updatedBlog : blog))
-    );
+  useEffect(() => {
+    fetchBlogs();
+    fetchTeamMembers();
+  }, []);
+
+  const openModal = () => {
+    setNewBlog({
+      title: "New Blog Title",
+      content:
+        "Dummy content Dummy content Dummy content Dummy content Dummy content",
+    });
+    setNewUser({
+      title: "New Blog Title",
+      content:
+        "Dummy content Dummy content Dummy content Dummy content Dummy content",
+    });
   };
 
-  const actions = [
+  const handleEditClick = (row, type) => {
+    if (type === "blog") {
+      const blogToEdit = blogs.find((blog) => blog.id === row.id);
+      setIsBlogEditing(true);
+      setSelectedBlog(blogToEdit);
+    } else {
+      const userToToEdit = blogs.find((blog) => blog.id === row.id);
+      setIsUserEditing(true);
+      setSelectedUser(userToToEdit);
+    }
+  };
+
+  const handleDelClick = (row, type) => {
+    if (type === "blog") {
+      setIsDelModeEnabled(row.id);
+    }
+  };
+
+  const handleBlogSave = () => {
+    fetchBlogs();
+  };
+
+  const blogActions = [
     {
       label: "Edit",
       className: "text-white bg-blue-500 rounded hover:bg-blue-600",
       onClick: handleEditClick,
+      type: "blog",
+    },
+    {
+      label: "Del",
+      className: "text-white bg-red-400 rounded hover:bg-red-500",
+      onClick: handleDelClick,
+      type: "blog",
+    },
+  ];
+
+  const userActions = [
+    {
+      label: "Edit",
+      className: "text-white bg-blue-500 rounded hover:bg-blue-600",
+      onClick: handleEditClick,
+      type: "user",
     },
   ];
 
@@ -93,7 +134,7 @@ const Dashboard = () => {
           ) : (
             <>
               <Table
-                headers={headers}
+                headers={blogHeaders}
                 rows={blogs.map(({ id, title, content }) => ({
                   id,
                   title,
@@ -101,11 +142,46 @@ const Dashboard = () => {
                 }))}
                 columnWidths={["5%", "40%", "45%"]}
                 sortKey="id"
-                actions={actions}
+                actions={blogActions}
               />
               <div className="text-right mt-4">
                 <CommonButton type="submit" onClick={openModal}>
                   CREATE BLOG
+                </CommonButton>
+              </div>
+            </>
+          )}
+        </div>
+      ),
+    },
+    {
+      label: "Users",
+      content: (
+        <div className="mx-auto">
+          {loading ? (
+            <p>Loading Users...</p>
+          ) : (
+            <>
+              <Table
+                headers={userHeaders}
+                rows={users.map(({ id, firstName, designation, role }) => ({
+                  id,
+                  firstName,
+                  designation,
+                  role,
+                }))}
+                columnWidths={["5%", "20%", "20%", "45%"]}
+                sortKey="id"
+                actions={userActions}
+              />
+              <div className="text-right mt-4">
+                <CommonButton
+                  type="submit"
+                  onClick={openModal}
+                  disabled
+                  className="disabled:opacity-50"
+                >
+                  CREATE USER
                 </CommonButton>
               </div>
             </>
@@ -157,6 +233,23 @@ const Dashboard = () => {
     }
   };
 
+  const deleteBlog = async () => {
+    console.log("Delete", isDelModeEnabled);
+    const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
+    setCreateLoading(true);
+    await axios.delete(
+      `https://project-1-be.onrender.com/blogs/delete/${isDelModeEnabled}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    setCreateLoading(false);
+    closeModal();
+    await fetchBlogs();
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -165,25 +258,47 @@ const Dashboard = () => {
       className="h-full flex flex-col items-center min_height"
     >
       <div className="container min-h-screen flex flex-col p-6">
-        {isEditing ? (
+        {isBlogEditing ? (
           <BlogForm
             blogData={selectedBlog}
-            onSave={handleSave}
+            onSave={handleBlogSave}
             goback={() => {
-              setIsEditing(false);
+              setIsBlogEditing(false);
               setSelectedBlog(null);
               fetchBlogs();
             }}
           />
+        ) : isUserEditing ? (
+          <UserForm
+            goback={() => {
+              setIsUserEditing(false);
+              setSelectedUser(null);
+              fetchTeamMembers();
+            }}
+          />
         ) : (
           <>
-            <Tabs
-              tabs={tabData}
-              defaultActiveTab={0}
-              onTabChange={(activeIndex) =>
-                console.log("Active Tab:", activeIndex)
-              }
-            />
+            <Tabs tabs={tabData} defaultActiveTab={0} />
+            {isDelModeEnabled && (
+              <Modal
+                isOpen={isDelModeEnabled}
+                onClose={closeModal}
+                size="small"
+              >
+                <div className="pt-6 font-bold text-right">
+                  <p className="text-left pb-4">
+                    Are you sure to delete the blog?
+                  </p>
+                  <CommonButton
+                    onClick={deleteBlog}
+                    disabled={createLoading}
+                    className={!createLoading ? "" : " disabled:opacity-50"}
+                  >
+                    {createLoading ? "DELETING..." : "DELETE"}
+                  </CommonButton>
+                </div>
+              </Modal>
+            )}
             {newBlog && (
               <Modal isOpen={!!newBlog} onClose={closeModal} member={newBlog}>
                 {createLoading ? (
