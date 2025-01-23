@@ -84,8 +84,9 @@ const Dashboard = () => {
       setIsBlogEditing(true);
       setSelectedBlog(blogToEdit);
     } else {
-      const userToToEdit = blogs.find((blog) => blog.id === row.id);
+      const userToToEdit = users.find((blog) => blog.id === row.id);
       setIsUserEditing(true);
+      console.log(userToToEdit);
       setSelectedUser(userToToEdit);
     }
   };
@@ -98,6 +99,10 @@ const Dashboard = () => {
 
   const handleBlogSave = () => {
     fetchBlogs();
+  };
+
+  const handleUserSave = () => {
+    fetchTeamMembers();
   };
 
   const blogActions = [
@@ -275,6 +280,8 @@ const Dashboard = () => {
               setSelectedUser(null);
               fetchTeamMembers();
             }}
+            userData={selectedUser}
+            onSave={handleUserSave}
           />
         ) : (
           <>

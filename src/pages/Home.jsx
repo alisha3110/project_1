@@ -3,7 +3,9 @@ import CommonInput from "../components/CommonInput";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import logo from "../assets/home_bg.jpg";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +59,13 @@ const Home = () => {
   const tabCLickHanlder = (route) => {
     navigate(`/${route}`);
   };
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      await axios.get("https://project-1-be.onrender.com/blogs");
+    };
+    fetchBlogs();
+  }, []);
 
   return (
     <motion.div

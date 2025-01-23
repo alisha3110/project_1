@@ -92,7 +92,7 @@ const CommonInput = ({
             : "focus:border-t-transparent"
         } text-blue-gray-700 font-sans border-t-0 font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2  text-sm px-3 py-2.5 rounded-[7px] border-blue-gray-200 focus:border-gray-900 ${
           customClass || ""
-        }`}
+        } ${readOnly ? "bg-input-disabled" : ""} `}
         placeholder={placeholder}
       />
       {!hideLabel && (

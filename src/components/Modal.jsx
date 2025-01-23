@@ -31,7 +31,7 @@ const Modal = ({ isOpen, onClose, children, size = "medium" }) => {
   const sizeClasses = {
     small: "w-1/3", // Small size
     medium: "w-1/2", // Medium size (default)
-    large: "w-3/4", // Large size
+    large: "w-4/5", // Large size
   };
 
   return (

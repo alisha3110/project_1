@@ -7,6 +7,7 @@ export default {
         "theme-bg": "#f7efef",
         "theme-font": "#737171",
         "footer-color": "#e4e4e4",
+        "input-disabled": "#efefef",
       },
       width: {
         90: "90%",

@@ -145,6 +145,7 @@ const Team = () => {
             isOpen={!!selectedMember}
             onClose={closeModal}
             member={selectedMember}
+            size="large"
           >
             <div className="flex flex-col md:flex-row justify-start rounded-md border-b-2 mb-6 pt-3 ">
               <div className="w-full md:w-3/5 lg:w-3/5 xl:w-2/5 h-auto">

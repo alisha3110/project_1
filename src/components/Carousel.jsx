@@ -36,14 +36,14 @@ const Carousel = ({ images }) => {
   };
 
   return (
-    <div className="w-full relative h-[50vh]">
+    <div className="w-full relative max-h-[50vh]">
       <Slider {...settings}>
         {images.map((image, index) => (
           <div key={index}>
             <img
               src={image}
               alt={`Slide ${index}`}
-              className="w-full object-contain rounded-lg h-[50vh]"
+              className="w-full object-contain rounded-lg max-h-[50vh]"
             />
           </div>
         ))}

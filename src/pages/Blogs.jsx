@@ -60,13 +60,11 @@ const Blog = ({ blog, onClick, onLike }) => {
               {" "}
               - By {getFullName(blog.submittedBy)}
             </p>
-            <p className="mb-3 text-sm md:text-base text-gray-700 dark:text-gray-400 w-full line-clamp-2">
-              {blog.content
-                .replaceAll("<p>", "")
-                .replaceAll("</p>", "")
-                .slice(0, 100)}
-              ...
-            </p>
+            <p
+              className="mb-3 text-sm md:text-base text-gray-700 dark:text-gray-400 w-full line-clamp-2"
+              style={{ overflowWrap: "anywhere" }}
+              dangerouslySetInnerHTML={{ __html: blog.content }}
+            ></p>
           </div>
         </div>
         <div className="border-t border-gray-200 dark:border-gray-700 p-4 flex items-center justify-end">
@@ -269,6 +267,7 @@ const Blogs = () => {
             isOpen={!!selectedBlog}
             onClose={closeModal}
             blog={selectedBlog}
+            size="large"
           >
             <div className="relative flex flex-col items-center m-4">
               {/* Carousel */}
