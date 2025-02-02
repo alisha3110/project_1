@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # This will trigger the workflow on pushes to the main branch
+      - main  # This triggers the workflow when you push to the 'main' branch
 
 jobs:
   deploy:
@@ -11,20 +11,20 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2  # Checks out the repository's code
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Use your required Node.js version
+          node-version: '14'  # Use the appropriate Node.js version for your project
 
       - name: Install dependencies
-        run: npm install  # Installs the dependencies from package.json
+        run: npm install  # Installs dependencies listed in package.json
 
       - name: Build project
-        run: npm run build  # Replace with your build command, if any
+        run: npm run build  # Builds the project (ensure this generates the 'dist' folder)
 
       - name: Deploy to GitHub Pages
-        run: npm run deploy  # Runs the deploy command, defined in package.json
+        run: npm run deploy  # Runs your 'gh-pages -d dist' command
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Provides authentication for pushing to GitHub Pages
