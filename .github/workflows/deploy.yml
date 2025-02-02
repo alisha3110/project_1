@@ -16,13 +16,20 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'  # Use the appropriate Node.js version for your project
+          node-version: '16'  # Use Node.js version 16 for compatibility with modern features
 
       - name: Install dependencies
         run: npm install  # Installs dependencies listed in package.json
 
       - name: Build project
-        run: npm run build  # Builds the project (ensure this generates the 'dist' folder)
+        run: npm run build  # Runs Vite to generate the 'dist' folder
+
+      - name: Check if 'dist' folder exists
+        run: |
+          if [ ! -d "dist" ]; then
+            echo "Error: 'dist' directory does not exist."
+            exit 1
+          fi
 
       - name: Deploy to GitHub Pages
         run: npm run deploy  # Runs your 'gh-pages -d dist' command
