@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import Modal from "../components/Modal";
@@ -6,13 +6,13 @@ import Carousel from "../components/Carousel";
 import { MessageCircle, Heart } from "lucide-react";
 import CommonButton from "../components/CommonButton";
 
-const Blog = ({ blog, onClick, onLike }) => {
+const Project = ({ project, onClick, onLike }) => {
   const firstImage =
-    blog.imageurls && blog.imageurls.length > 0
-      ? blog.imageurls[0]
+    project.imageurls && project.imageurls.length > 0
+      ? project.imageurls[0]
       : "https://via.placeholder.com/800x400?text=No+Image";
 
-  const isLiked = sessionStorage.getItem(`liked_${blog.id}`) === "true";
+  const isLiked = sessionStorage.getItem(`liked_${project.id}`) === "true";
 
   const getFullName = (id) => {
     const teamMembers =
@@ -24,18 +24,18 @@ const Blog = ({ blog, onClick, onLike }) => {
   const handleLike = async (event) => {
     event.stopPropagation();
     const newLikeState = !isLiked;
-    sessionStorage.setItem(`liked_${blog.id}`, newLikeState);
+    sessionStorage.setItem(`liked_${project.id}`, newLikeState);
 
     try {
       await axios.post(
-        `https://project-1-be.onrender.com/blogs/${blog.id}/like`,
+        `https://project-1-be.onrender.com/ourwork/${project.id}/like`,
         {
           liked: newLikeState,
         }
       );
-      onLike(blog.id, newLikeState);
+      onLike(project.id, newLikeState);
     } catch (error) {
-      console.error("Error liking the blog:", error);
+      console.error("Error liking the project:", error);
     }
   };
 
@@ -43,118 +43,88 @@ const Blog = ({ blog, onClick, onLike }) => {
     <motion.div
       className="p-4 w-full sm:w-1/2 md:w-1/2 lg:w-1/2 flex flex-col items-center mb-1 cursor-pointer"
       whileHover={{ scale: 1.01 }}
-      onClick={() => onClick(blog)}
+      onClick={() => onClick(project)}
     >
       <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-h-[300px] max-h-full md:max-h-[300px] flex flex-col">
-        <div className="flex grow flex-col md:flex-row overflow-hidden">
+      <div className="flex grow flex-col md:flex-row overflow-hidden"> 
+        
           <img
             className="w-full md:w-1/2 object-fit"
             src={firstImage}
             alt="Blog Image"
-          />
+          />  
+                
           <div className="p-3 lg:p-5 flex-1">
             <h5 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {blog.title}
+              {project.title}
             </h5>
             <p className="mb-2 text-xs float-right">
               {" "}
-              - By {getFullName(blog.submittedBy)}
-            </p>
+              - Project created by 
+              {getFullName(project.submittedBy)}
+             </p>
             <p
               className="mb-3 text-sm md:text-base text-gray-700 dark:text-gray-400 w-full line-clamp-2"
-              style={{ overflowWrap: "anywhere" }}
-              dangerouslySetInnerHTML={{ __html: blog.content }}
-            ></p>
-          </div>
-        </div>
-        <div className="border-t border-gray-200 dark:border-gray-700 p-4 flex items-center justify-end">
-          <div className="flex space-x-4">
-            <button className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white flex items-center space-x-1">
-              <MessageCircle className="w-4" />
-              <span>{blog.comments.length}</span>
-            </button>
-            <button
-              onClick={handleLike}
-              className={`flex items-center space-x-1 ${
-                isLiked ? "text-pink-500" : "text-gray-500"
-              } dark:${
-                isLiked ? "text-pink-500" : "text-gray-400"
-              } hover:text-gray-900 dark:hover:text-white`}
+              style={{ overflowWrap: "anywhere" }}              
             >
-              <Heart className="w-4" fill={isLiked ? "currentColor" : "none"} />
-              <span>{blog.likes}</span>
-            </button>
-          </div>
+              The project one about the medical surgeries
+            </p>
+          </div>          
         </div>
       </div>
     </motion.div>
   );
 };
 
-const Blogs = () => {
-  const [selectedBlog, setSelectedBlog] = useState(null);
-  const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true);
+const OurWorks = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [commentLoader, setCommentLoader] = useState(false);
   const [newComment, setNewComment] = useState("");
   const [commentError, setCommentError] = useState("");
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      console.log("Fetching blogs...");
+    const fetchOurWorks = async () => {
+      console.log("Fetching projects...");
       try {
         const response = await axios.get(
-          "https://project-1-be.onrender.com/blogs"
+          "https://project-1-be.onrender.com/project"
         );
-        setBlogs(response.data.filter((x) => x.status == 1));
-        console.log(response);
-        setLoading(false);
+        console.log("projects data is ", response);
+        setProjects(response.data.filter((x) => x.status === 1));
+         setLoading(false);
       } catch (err) {
-        setError("Failed to fetch blogs");
+        setError("Failed to fetch projects");
       }
-    };
-    const fetchTeamMembers = async () => {
-      try {
-        const response = await axios.get(
-          "https://project-1-be.onrender.com/auth/users"
-        );
-        sessionStorage.setItem(
-          "team-members",
-          JSON.stringify(response.data.sort((x, y) => x.id - y.id))
-        );
-        setLoading(false);
-      } catch (error) {
-        console.log("Failed to fetch team members");
-      }
-    };
-    if (!sessionStorage.getItem("team-members")) fetchTeamMembers();
-    fetchBlogs();
+    };    
+    fetchOurWorks();
   }, []);
 
-  const openModal = (blog) => {
-    setSelectedBlog(blog);
+  const openModal = (project) => {
+    setSelectedProject(project);
     setNewComment(""); // Reset new comment input
     setCommentError(""); // Reset error message
   };
 
   const closeModal = () => {
-    setSelectedBlog(null);
+    setSelectedProject(null);
   };
 
   const handleLikeUpdate = (id, liked) => {
-    setBlogs((prevBlogs) =>
-      prevBlogs.map((blog) =>
-        blog.id === id
+    setOurWork((prevOurWork) =>
+      prevOurWork.map((project) =>
+        project.id === id
           ? {
-              ...blog,
+              ...project,
               likes: liked
-                ? parseInt(blog.likes) + 1
-                : parseInt(blog.likes) == 0
+                ? parseInt(project.likes) + 1
+                : parseInt(project.likes) == 0
                 ? 0
-                : parseInt(blog.likes) - 1,
+                : parseInt(project.likes) - 1,
             }
-          : blog
+          : project
       )
     );
   };
@@ -167,29 +137,29 @@ const Blogs = () => {
     setCommentLoader(true);
     try {
       await axios.put(
-        `https://project-1-be.onrender.com/blogs/comment/${selectedBlog.id}`,
+        `https://project-1-be.onrender.com/ourwork/comment/${selectedBlog.id}`,
         {
           comment: newComment,
         }
       );
 
       // Update the selected blog's comments in state
-      setSelectedBlog((prevBlog) => ({
-        ...prevBlog,
-        comments: [...prevBlog.comments, newComment],
+      setSelectedProject((prevProject) => ({
+        ...prevProject,
+        comments: [...prevProject.comments, newComment],
       }));
-      setBlogs((prevBlogs) =>
-        prevBlogs.map((blog) =>
-          blog.id === selectedBlog.id
-            ? { ...blog, comments: [...blog.comments, newComment] }
-            : blog
+      setOurWork((prevOurWork) =>
+        prevOurWork.map((project) =>
+          project.id === selectedProject.id
+            ? { ...project, comments: [...project.comments, newComment] }
+            : project
         )
       );
       setNewComment(""); // Reset comment input
       setCommentError(""); // Reset error message
       setCommentLoader(false);
     } catch (error) {
-      console.error("Error posting comment:", error);
+      // console.error("Error posting comment:", error);
       setCommentLoader(false);
     }
   };
@@ -215,16 +185,10 @@ const Blogs = () => {
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
           <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            VVMA IS A VOICE FOR EQUALIZING MEDICINE
+            Our Work at VVMA 
           </h2>
           <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
           <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
-              At VVMA, our blog is more than just a platform—it's a resource for
-              change. Through in-depth and researched articles, we dive into
-              critical health issues, exploring the challenges and disparities
-              that exist in global healthcare along with exciting new medical
-              technologies. Join us as we share actionable insights and inspire
-              solutions to bridge the gaps and promote health equity for all.
             </p>
           </div>
           {loading ? (
@@ -249,12 +213,12 @@ const Blogs = () => {
             </div>
           ) : (
             <div className="flex flex-wrap">
-              {blogs
+              {projects
                 .sort((a, b) => a.id - b.id)
-                .map((blog) => (
-                  <Blog
-                    key={blog.id}
-                    blog={blog}
+                .map((project) => (
+                  <Project
+                    key={project.id}
+                    project={project}
                     onClick={openModal}
                     onLike={handleLikeUpdate}
                   />
@@ -263,35 +227,35 @@ const Blogs = () => {
           )}
         </div>
 
-        {selectedBlog && (
+        {selectedProject && (
           <Modal
-            isOpen={!!selectedBlog}
+            isOpen={!!selectedProject}
             onClose={closeModal}
-            blog={selectedBlog}
+            project={selectedProject}
             size="large"
           >
             <div className="relative flex flex-col items-center m-4">
               {/* Carousel */}
-              {selectedBlog.imageurls.length ? (
+              {selectedProject.imageurls.length ? (
                 <div className="w-full md:w-2/3">
-                  <Carousel images={selectedBlog.imageurls} />
+                  <Carousel images={selectedProject.imageurls} />
                 </div>
               ) : null}
 
               {/* Title and Scrollable Description */}
               <div className="p-4 md:p-6 mt-6 bg-gray-100 rounded-lg shadow-lg w-full ">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
-                  {selectedBlog.title}
+                  {selectedProject.title}
                 </h2>
                 <div className="overflow-y-auto p-2">
                   <p
                     className="text-sm md:text-base text-gray-700 content-p-tag"
-                    dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+                    dangerouslySetInnerHTML={{ __html: selectedProject.content }}
                   ></p>
                 </div>
                 <p className="mt-2 text-xs float-right">
                   {" "}
-                  - By {getFullName(selectedBlog.submittedBy)}
+                  - By {getFullName(selectedProject.submittedBy)}
                 </p>
               </div>
 
@@ -299,7 +263,7 @@ const Blogs = () => {
               <div className="w-full mt-6">
                 <h3 className="text-lg font-semibold mb-2">Comments:</h3>
                 <div className="max-h-40 overflow-y-auto mb-4">
-                  {selectedBlog.comments.map((comment, index) => (
+                  {selectedProject.comments.map((comment, index) => (
                     <div
                       key={index}
                       className="w-full md:w-4/5 p-2 px-4 bg-gray-200 rounded-lg mb-3 shadow-sm text-sm"
@@ -355,4 +319,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default OurWorks;

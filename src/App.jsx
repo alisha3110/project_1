@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   HashRouter as Router,
   Routes,
@@ -8,6 +8,7 @@ import {
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
+import OurWork from "./pages/OurWork";
 import About from "./pages/About";
 import Team from "./pages/Team";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/blog" element={<Blogs />} />
+            <Route path="/ourwork" element={<OurWork/>} />
             <Route path="/about" element={<About />} />
             <Route path="/team" element={<Team />} />
             <Route path="/login" element={<Login login={login} />} />

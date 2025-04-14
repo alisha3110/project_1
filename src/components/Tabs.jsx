@@ -17,7 +17,7 @@ const Tabs = ({ tabs, defaultActiveTab = 0, onTabChange }) => {
             key={index}
             className={`relative py-2 px-6 font-medium transform transition-transform duration-300 ease-out ${
               activeTab === index
-                ? "scale-110"
+                ? "scale-110 text-white"
                 : "text-gray-500 hover:text-darkgray-500 hover:scale-105"
             }`}
             onClick={() => handleTabClick(index)}
@@ -25,7 +25,7 @@ const Tabs = ({ tabs, defaultActiveTab = 0, onTabChange }) => {
             {tab.label}
             {/* Fancy Underline */}
             <span
-              className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded bg-black transition-all duration-300 ease-out ${
+              className={`absolute left-0 right-0 -bottom-1 h-[3px] rounded bg-white transition-all duration-300 ease-out ${
                 activeTab === index ? "w-full" : "w-0"
               }`}
             ></span>

@@ -19,12 +19,18 @@ const Footer = () => {
               className="hover:text-black transition duration-200"
             >
               Blogs
-            </Link>
+            </Link>            
             <Link
               to="/about"
               className="hover:text-black transition duration-200"
             >
               About
+            </Link>
+            <Link
+              to="/ourwork"
+              className="hover:text-black transition duration-200"
+            >
+              OurWork
             </Link>
             <Link
               to="/team"
