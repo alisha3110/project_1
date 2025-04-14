@@ -28,7 +28,8 @@ const Dashboard = () => {
   const [isBlogEditing, setIsBlogEditing] = useState(false);
   const [isUserEditing, setIsUserEditing] = useState(false);
   const [isProjectEditing, setIsProjectEditing] = useState(false);
-  const [isDelModeEnabled, setIsDelModeEnabled] = useState("");
+  const [isDelBlogModeEnabled, setIsDelBlogModeEnabled] = useState("");
+  const [isDelProjectModeEnabled, setIsDelProjectModeEnabled] = useState("");
   const [activeTab, setActiveTab]=useState(0);
 
 
@@ -36,7 +37,8 @@ const Dashboard = () => {
     setNewBlog(null);
     setNewUser(null);
     setNewProject(null);
-    setIsDelModeEnabled("");
+    setIsDelBlogModeEnabled("");
+    setIsDelProjectModeEnabled("");
   };
 
   const fetchBlogs = async () => {
@@ -127,13 +129,13 @@ const Dashboard = () => {
 
   const handleDelClick = (row, type) => {
     if (type === "blog") {
-      setIsDelModeEnabled(row.id);
+      setIsDelBlogModeEnabled(row.id);
     }
   };
 
   const handleProjectDelClick = (row, type) => {
     if (type === "project") {
-      setIsDelModeEnabled(row.id);
+      setIsDelProjectModeEnabled(row.id);
     }
   };
 
@@ -324,11 +326,11 @@ const Dashboard = () => {
   };
 
   const deleteProject = async () => {
-    console.log("Delete", isDelModeEnabled);
+    console.log("Delete", isDelProjectModeEnabled);
     const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
     setCreateLoading(true);
     await axios.delete(
-      `https://project-1-be.onrender.com/project/delete/${isDelModeEnabled}`,
+      `https://project-1-be.onrender.com/project/delete/${isDelProjectModeEnabled}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -388,11 +390,11 @@ const Dashboard = () => {
   };
 
   const deleteBlog = async () => {
-    console.log("Delete", isDelModeEnabled);
+    console.log("Delete", isDelBlogModeEnabled);
     const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
     setCreateLoading(true);
     await axios.delete(
-      `https://project-1-be.onrender.com/blogs/delete/${isDelModeEnabled}`,
+      `https://project-1-be.onrender.com/blogs/delete/${isDelBlogModeEnabled}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -445,17 +447,14 @@ const Dashboard = () => {
         ) : (
           <>
             <Tabs tabs={tabData} defaultActiveTab={activeTab} />
-            {isDelModeEnabled && (
+            {isDelBlogModeEnabled && (
               <Modal
-                isOpen={isDelModeEnabled}
+                isOpen={isDelBlogModeEnabled}
                 onClose={closeModal}
                 size="small"
               >
-                { 
-
-                }
                 <div className="pt-6 font-bold text-right">
-                  <p className="text-left pb-4">
+                  <p className="text-left pb-4 text-white">
                     Are you sure to delete the blog?
                   </p>
                   <CommonButton
@@ -463,7 +462,27 @@ const Dashboard = () => {
                     disabled={createLoading}
                     className={!createLoading ? "" : " disabled:opacity-50"}
                   >
-                    {createLoading ? "DELETING..." : "DELETE"}
+                    {createLoading ? "DELETING..." : "DELETE BLOG"}
+                  </CommonButton>
+                </div>
+              </Modal>
+            )}
+            {isDelProjectModeEnabled && (
+              <Modal
+                isOpen={isDelProjectModeEnabled}
+                onClose={closeModal}
+                size="small"
+              >
+                <div className="pt-6 font-bold text-right">
+                  <p className="text-left pb-4 text-white">
+                    Are you sure to delete the project?
+                  </p>
+                  <CommonButton
+                    onClick={deleteProject}
+                    disabled={createLoading}
+                    className={!createLoading ? "" : " disabled:opacity-50"}
+                  >
+                    {createLoading ? "DELETING..." : "DELETE PROJECT"}
                   </CommonButton>
                 </div>
               </Modal>
