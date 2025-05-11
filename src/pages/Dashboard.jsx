@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Tabs from "../components/Tabs";
 import Table from "../components/Table";
 import BlogForm from "../components/BlogForm"; // Import the form component
 import UserForm from "../components/UserForm"; // Import the form component
+import ProjectForm from "../components/ProjectForm"; //Import the form component
 import axios from "axios";
 import CommonButton from "../components/CommonButton";
 import Modal from "../components/Modal";
@@ -12,22 +13,32 @@ import CommonInput from "../components/CommonInput";
 const Dashboard = () => {
   const blogHeaders = ["ID", "Title", "Content"];
   const userHeaders = ["ID", "Name", "Designation", "Role"];
+  const projectHeaders = ["ID", "Title", "Content"];
   const [blogs, setBlogs] = useState([]);
+  const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [createLoading, setCreateLoading] = useState(false);
   const [newBlog, setNewBlog] = useState(null);
   const [newUser, setNewUser] = useState(null);
+  const [newProject, setNewProject] = useState(null);
   const [selectedBlog, setSelectedBlog] = useState(null); // Track selected blog for editing
   const [selectedUser, setSelectedUser] = useState(null); // Track selected blog for editing
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isBlogEditing, setIsBlogEditing] = useState(false);
   const [isUserEditing, setIsUserEditing] = useState(false);
-  const [isDelModeEnabled, setIsDelModeEnabled] = useState("");
+  const [isProjectEditing, setIsProjectEditing] = useState(false);
+  const [isDelBlogModeEnabled, setIsDelBlogModeEnabled] = useState("");
+  const [isDelProjectModeEnabled, setIsDelProjectModeEnabled] = useState("");
+  const [activeTab, setActiveTab]=useState(0);
+
 
   const closeModal = () => {
     setNewBlog(null);
     setNewUser(null);
-    setIsDelModeEnabled("");
+    setNewProject(null);
+    setIsDelBlogModeEnabled("");
+    setIsDelProjectModeEnabled("");
   };
 
   const fetchBlogs = async () => {
@@ -39,6 +50,21 @@ const Dashboard = () => {
       setBlogs(response.data.filter((x) => x.status !== 3));
     } catch (err) {
       console.error("Failed to fetch blogs");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchProjects = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(
+        "https://project-1-be.onrender.com/project"
+      );
+      setActiveTab(2);
+      setProjects(response.data.filter((x) => x.status !== 3));
+    } catch (err) {
+      console.error("Failed to fetch projects");
     } finally {
       setLoading(false);
     }
@@ -63,6 +89,7 @@ const Dashboard = () => {
   useEffect(() => {
     fetchBlogs();
     fetchTeamMembers();
+    fetchProjects();
   }, []);
 
   const openModal = () => {
@@ -76,6 +103,11 @@ const Dashboard = () => {
       content:
         "Dummy content Dummy content Dummy content Dummy content Dummy content",
     });
+    setNewProject({
+      title: "New Project Title",
+      content:
+        "Dummy content Dummy content Dummy content Dummy content Dummy content",
+    })
   };
 
   const handleEditClick = (row, type) => {
@@ -83,6 +115,10 @@ const Dashboard = () => {
       const blogToEdit = blogs.find((blog) => blog.id === row.id);
       setIsBlogEditing(true);
       setSelectedBlog(blogToEdit);
+    } else if(type === 'project') {
+      const projectToEdit = projects.find((project) => project.id === row.id);
+      setIsProjectEditing(true);
+      setSelectedProject(projectToEdit);
     } else {
       const userToToEdit = users.find((blog) => blog.id === row.id);
       setIsUserEditing(true);
@@ -93,7 +129,13 @@ const Dashboard = () => {
 
   const handleDelClick = (row, type) => {
     if (type === "blog") {
-      setIsDelModeEnabled(row.id);
+      setIsDelBlogModeEnabled(row.id);
+    }
+  };
+
+  const handleProjectDelClick = (row, type) => {
+    if (type === "project") {
+      setIsDelProjectModeEnabled(row.id);
     }
   };
 
@@ -103,6 +145,10 @@ const Dashboard = () => {
 
   const handleUserSave = () => {
     fetchTeamMembers();
+  };
+
+  const handleProjectSave = () => {
+    fetchProjects();    
   };
 
   const blogActions = [
@@ -117,6 +163,21 @@ const Dashboard = () => {
       className: "text-white bg-red-400 rounded hover:bg-red-500",
       onClick: handleDelClick,
       type: "blog",
+    },
+  ];
+
+  const projectActions = [
+    {
+      label: "Edit",
+      className: "text-white bg-blue-500 rounded hover:bg-blue-600",
+      onClick: handleEditClick,
+      type: "project",
+    },
+    {
+      label: "Del",
+      className: "text-white bg-red-400 rounded hover:bg-red-500",
+      onClick: handleProjectDelClick,
+      type: "project",
     },
   ];
 
@@ -194,11 +255,101 @@ const Dashboard = () => {
         </div>
       ),
     },
+    {
+      label: "OurWork",
+      content: (
+        <div className="mx-auto">
+          {loading ? (
+            <p>Loading OurWork...</p>
+          ) : (
+            <>
+              <Table
+                headers={projectHeaders}
+                rows={projects.map(({ id, title, content }) => ({
+                  id,
+                  title,
+                  content,
+                }))}
+                columnWidths={["5%", "40%", "45%"]}
+                sortKey="id"
+                actions={projectActions}
+              />
+              <div className="text-right mt-4">
+                <CommonButton
+                  type="submit"
+                  onClick={openModal}
+                  className="disabled:opacity-50"
+                >
+                  ADD PROJECT
+                </CommonButton>
+              </div>
+            </>
+          )}
+        </div>
+      ),
+    },
   ];
+
+  // Create new Project methods
+  const createProject = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    console.log(newProject);
+    try {
+      setCreateLoading(true);
+      const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
+      const response = await axios.post(
+        `https://project-1-be.onrender.com/project`,
+        newProject,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        alert("Project created successfully!"); // Success message or handle redirection
+        // Optionally, reset the form fields after successful creation
+        setNewProject({
+          title: "",
+        });
+        setCreateLoading(false);
+        fetchProjects();
+        setNewProject(null);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Error creating project: " + error.message);
+      setCreateLoading(false);
+    }
+  };
+
+  const deleteProject = async () => {
+    console.log("Delete", isDelProjectModeEnabled);
+    const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
+    setCreateLoading(true);
+    await axios.delete(
+      `https://project-1-be.onrender.com/project/delete/${isDelProjectModeEnabled}`,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    setCreateLoading(false);
+    closeModal();
+    await fetchProjects();
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewBlog((prevState) => ({
+      ...prevState,
+      [name]: value, // Update the state for the input field
+    }));
+
+    setNewProject((prevState) => ({
       ...prevState,
       [name]: value, // Update the state for the input field
     }));
@@ -239,11 +390,11 @@ const Dashboard = () => {
   };
 
   const deleteBlog = async () => {
-    console.log("Delete", isDelModeEnabled);
+    console.log("Delete", isDelBlogModeEnabled);
     const user = JSON.parse(sessionStorage.getItem("user")); // Retrieve token from sessionStorage or other storage
     setCreateLoading(true);
     await axios.delete(
-      `https://project-1-be.onrender.com/blogs/delete/${isDelModeEnabled}`,
+      `https://project-1-be.onrender.com/blogs/delete/${isDelBlogModeEnabled}`,
       {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -283,17 +434,27 @@ const Dashboard = () => {
             userData={selectedUser}
             onSave={handleUserSave}
           />
+        ) : isProjectEditing ? (
+          <ProjectForm
+            goback={() => {
+              setIsProjectEditing(false);
+              setSelectedProject(null);
+              fetchProjects();
+            }}
+            projectData={selectedProject}
+            onSave={handleProjectSave}
+          />
         ) : (
           <>
-            <Tabs tabs={tabData} defaultActiveTab={0} />
-            {isDelModeEnabled && (
+            <Tabs tabs={tabData} defaultActiveTab={activeTab} />
+            {isDelBlogModeEnabled && (
               <Modal
-                isOpen={isDelModeEnabled}
+                isOpen={isDelBlogModeEnabled}
                 onClose={closeModal}
                 size="small"
               >
                 <div className="pt-6 font-bold text-right">
-                  <p className="text-left pb-4">
+                  <p className="text-left pb-4 text-white">
                     Are you sure to delete the blog?
                   </p>
                   <CommonButton
@@ -301,7 +462,27 @@ const Dashboard = () => {
                     disabled={createLoading}
                     className={!createLoading ? "" : " disabled:opacity-50"}
                   >
-                    {createLoading ? "DELETING..." : "DELETE"}
+                    {createLoading ? "DELETING..." : "DELETE BLOG"}
+                  </CommonButton>
+                </div>
+              </Modal>
+            )}
+            {isDelProjectModeEnabled && (
+              <Modal
+                isOpen={isDelProjectModeEnabled}
+                onClose={closeModal}
+                size="small"
+              >
+                <div className="pt-6 font-bold text-right">
+                  <p className="text-left pb-4 text-white">
+                    Are you sure to delete the project?
+                  </p>
+                  <CommonButton
+                    onClick={deleteProject}
+                    disabled={createLoading}
+                    className={!createLoading ? "" : " disabled:opacity-50"}
+                  >
+                    {createLoading ? "DELETING..." : "DELETE PROJECT"}
                   </CommonButton>
                 </div>
               </Modal>
@@ -329,6 +510,34 @@ const Dashboard = () => {
                       onClick={createBlog}
                     >
                       CREATE
+                    </CommonButton>
+                  </div>
+                )}
+              </Modal>
+            )}
+            {newProject && (
+              <Modal isOpen={!!newProject} onClose={closeModal} member={newProject}>
+                {createLoading ? (
+                  <div className="p-8">Creating your Project, Please wait!!</div>
+                ) : (
+                  <div className="p-6 pt-8 text-right">
+                    <CommonInput
+                      type="text"
+                      name="title"
+                      value={newProject.title}
+                      onChange={handleInputChange}
+                      label="Title"
+                      required
+                    />
+                    <CommonButton
+                      type="submit"
+                      className={
+                        newProject.title?.length ? "" : " disabled:opacity-50"
+                      }
+                      disabled={!newProject.title?.length}
+                      onClick={createProject}
+                    >
+                      CREATE PROJECT
                     </CommonButton>
                   </div>
                 )}

@@ -4,6 +4,7 @@ export const navItems = [
   { label: "Home", href: "/" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
+  {label: "OurWork", href: "/ourwork"},
   { label: "Our team", href: "/team" },
 ];
 
@@ -27,6 +28,33 @@ export const blogs = [
   {
     title: "Some title 5",
     des: "Will try the things now",
+  },
+];
+
+export const ourwork = [
+  {
+    title: "Project 1",
+    des: "Project one description",
+  },
+  {
+    title: "Project 2",
+    des: "Project two description",
+  },
+  {
+    title: "Project 3",
+    des: "Project three description",
+  },
+  {
+    title: "Project 4",
+    des: "Project four description",
+  },
+  {
+    title: "Project 5",
+    des: "Project five description",
+  },
+  {
+    title: "Project 6",
+    des: "Project six description",
   },
 ];
 
