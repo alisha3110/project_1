@@ -1,5 +1,3 @@
-import React from "react";
-
 const CommonButton = ({ onClick, className, children, disabled, type }) => {
   return (
     <div className="w-full">

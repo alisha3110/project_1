@@ -67,7 +67,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-2 text-center text-gray-500 text-sm">
-          &copy; 2024 VVMA. All rights reserved.
+          &copy; 2024 VVMA. All rights reserved. Powered by <a href="https://vinraytech.com" target="_blank"> vinraytech.com </a>
         </div>
       </div>
     </footer>
