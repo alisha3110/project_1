@@ -92,22 +92,29 @@ const Dashboard = () => {
     fetchProjects();
   }, []);
 
-  const openModal = () => {
-    setNewBlog({
+  const openModal = (modalType) => {
+    switch (modalType) {
+    case 'create-project':
+        setNewProject({
+          title: "New Project Title",
+          content:
+            "Dummy content Dummy content Dummy content Dummy content Dummy content",
+        })
+      break;
+    case 'blog':
+      setNewBlog({
       title: "New Blog Title",
-      content:
-        "Dummy content Dummy content Dummy content Dummy content Dummy content",
-    });
-    setNewUser({
-      title: "New Blog Title",
-      content:
-        "Dummy content Dummy content Dummy content Dummy content Dummy content",
-    });
-    setNewProject({
-      title: "New Project Title",
-      content:
-        "Dummy content Dummy content Dummy content Dummy content Dummy content",
-    })
+        content:
+          "Dummy content Dummy content Dummy content Dummy content Dummy content",
+      });
+      break;
+      default:
+        setNewUser({
+          title: "New Blog Title",
+          content:
+            "Dummy content Dummy content Dummy content Dummy content Dummy content",
+        });
+    }
   };
 
   const handleEditClick = (row, type) => {
@@ -211,7 +218,7 @@ const Dashboard = () => {
                 actions={blogActions}
               />
               <div className="text-right mt-4">
-                <CommonButton type="submit" onClick={openModal}>
+                <CommonButton type="submit" onClick={() => openModal('blog')}>
                   CREATE BLOG
                 </CommonButton>
               </div>
@@ -243,8 +250,7 @@ const Dashboard = () => {
               <div className="text-right mt-4">
                 <CommonButton
                   type="submit"
-                  onClick={openModal}
-                  disabled
+                  onClick={() => openModal('user')}                  
                   className="disabled:opacity-50"
                 >
                   CREATE USER
@@ -277,7 +283,7 @@ const Dashboard = () => {
               <div className="text-right mt-4">
                 <CommonButton
                   type="submit"
-                  onClick={openModal}
+                  onClick={() => openModal('create-project')}
                   className="disabled:opacity-50"
                 >
                   ADD PROJECT
@@ -342,14 +348,17 @@ const Dashboard = () => {
     await fetchProjects();
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewBlog((prevState) => ({
+  const handleProjectInputChange = (e) => {
+    const { name, value } = e.target;  
+    setNewProject((prevState) => ({
       ...prevState,
       [name]: value, // Update the state for the input field
     }));
+  };
 
-    setNewProject((prevState) => ({
+    const handleBlogInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewBlog((prevState) => ({
       ...prevState,
       [name]: value, // Update the state for the input field
     }));
@@ -488,7 +497,7 @@ const Dashboard = () => {
               </Modal>
             )}
             {newBlog && (
-              <Modal isOpen={!!newBlog} onClose={closeModal} member={newBlog}>
+              <Modal isOpen={newBlog} onClose={closeModal} member={newBlog}>
                 {createLoading ? (
                   <div className="p-8">Creating your Blog, Please wait!!</div>
                 ) : (
@@ -497,7 +506,7 @@ const Dashboard = () => {
                       type="text"
                       name="title"
                       value={newBlog.title}
-                      onChange={handleInputChange}
+                      onChange={handleBlogInputChange}
                       label="Title"
                       required
                     />
@@ -509,14 +518,14 @@ const Dashboard = () => {
                       disabled={!newBlog.title?.length}
                       onClick={createBlog}
                     >
-                      CREATE
+                      CREATE BLOG
                     </CommonButton>
                   </div>
                 )}
               </Modal>
             )}
             {newProject && (
-              <Modal isOpen={!!newProject} onClose={closeModal} member={newProject}>
+              <Modal isOpen={newProject} onClose={closeModal} member={newProject}>
                 {createLoading ? (
                   <div className="p-8">Creating your Project, Please wait!!</div>
                 ) : (
@@ -525,7 +534,7 @@ const Dashboard = () => {
                       type="text"
                       name="title"
                       value={newProject.title}
-                      onChange={handleInputChange}
+                      onChange={handleProjectInputChange}
                       label="Title"
                       required
                     />
