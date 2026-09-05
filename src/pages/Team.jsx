@@ -3,6 +3,7 @@ import { Facebook, Twitter, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import Modal from "../components/Modal";
 import axios from "axios";
+import SEO from "../components/SEO";
 
 const TeamMember = ({ member, onClick }) => {
   const socialLinks = JSON.parse(member.social);
@@ -18,7 +19,8 @@ const TeamMember = ({ member, onClick }) => {
           <img
             className="h-full w-full object-cover"
             src={member.imageurl}
-            alt={`${member.firstName} ${member.lastName}`}
+            alt={`${member.firstName} ${member.lastName} - ${member.designation} at Vital Voices Medical Advocacy`}
+            loading="lazy"
           />
         </div>
         <div className="flex flex-col w-full">
@@ -29,6 +31,9 @@ const TeamMember = ({ member, onClick }) => {
             {socialLinks.linkedIn && (
               <a
                 href={socialLinks.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${member.firstName} ${member.lastName} LinkedIn Profile`}
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
               >
                 <Linkedin className="w-5 h-5" />
@@ -94,11 +99,16 @@ const Team = () => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center justify-center min_height"
     >
+      <SEO
+        title="Our Team & Leadership | Vital Voices Medical Advocacy"
+        description="Meet the passionate leaders, healthcare advocates, and visionaries driving Vital Voices Medical Advocacy forward."
+        canonical="https://vvmadvocacy.com/#/team"
+      />
       <section className="py-16 dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            Meet The Team
-          </h2>
+          <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
+            Meet Our Team & Leadership
+          </h1>
           <p className="w-[80vw] md:w-[60vw] m-auto text-center text-gray-600 text-sm md:text-base mt-2 pb-8">
             Vital Voices stands at the forefront of a transformative movement to
             redefine healthcare accessibility and equity. Through our unwavering

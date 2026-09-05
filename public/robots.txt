@@ -1,0 +1,8 @@
+# robots.txt for https://vvmadvocacy.com
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+
+Sitemap: https://vvmadvocacy.com/sitemap.xml

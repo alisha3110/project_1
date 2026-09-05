@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import CommonButton from "../components/CommonButton";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function NotFound() {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center min_height"
     >
+      <SEO title="Page Not Found | Vital Voices Medical Advocacy" description="Sorry, the page you are looking for does not exist." />
       <main className="grid min-h-full place-items-center px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
           <p className="text-base font-semibold text-indigo-600">404</p>

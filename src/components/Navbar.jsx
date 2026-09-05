@@ -46,7 +46,9 @@ const Navbar = ({ isAuthenticated, logout }) => {
     >
       <div className="container mx-auto relative flex justify-between items-center text-sm">
         <div className="flex items-center flex-shrink-0">
-          <img src={logo} alt="main logo" className="w-24 rounded-xl mr-2" />
+          <Link to="/" aria-label="Vital Voices Medical Advocacy Home">
+            <img src={logo} alt="Vital Voices Medical Advocacy Logo" className="w-24 rounded-xl mr-2" />
+          </Link>
         </div>
         <ul className="hidden lg:flex ml-14 space-x-12 items-center">
           {navItems.map((item, id) => (
@@ -119,7 +121,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
               </Link>
             </motion.div>
           )}
-          <button onClick={toggleNavbar}>
+          <button onClick={toggleNavbar} aria-label="Toggle navigation menu">
             {mobileDrawerOpen ? <X /> : <Menu />}
           </button>
         </div>
