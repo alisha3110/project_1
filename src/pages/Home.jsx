@@ -6,6 +6,7 @@ import logo from "../assets/home_bg.jpg";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
+import SEO from "../components/SEO";
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -74,6 +75,11 @@ const Home = () => {
       transition={{ duration: 0.5 }}
       className="h-full items-center min_height"
     >
+      <SEO
+        title="Vital Voices Medical Advocacy (VVMA) | Youth-Led Global Healthcare Non-Profit"
+        description="Vital Voices Medical Advocacy (VVMA) is a youth-led organization breaking global healthcare barriers through rural CPR education, community service projects, and public health equity advocacy."
+        canonical="https://vvmadvocacy.com/"
+      />
       <div>
         {/* Hero Section with Background Image */}
         <div className="relative bg-cover bg-center h-[70vh] flex flex-col items-center justify-center text-center">
@@ -88,10 +94,10 @@ const Home = () => {
             }}
           ></div>
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          <p className="relative z-10 text-white text-4xl font-bold sm:text-5xl md:text-6xl p-6">
+          <h1 className="relative z-10 text-white text-4xl font-bold sm:text-5xl md:text-6xl p-6">
             Vital Voices :
             <span className="pt-4 block">Vital Voices Medical Advocacy</span>
-          </p>
+          </h1>
           <p className="relative text-white max-w-[90vw] md:max-w-[70vw]">
             VVMA is a trailblazing youth-led organization focused on reshaping
             global healthcare to make it accessible for everyone, everywhere.

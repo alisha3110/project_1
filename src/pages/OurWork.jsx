@@ -5,6 +5,7 @@ import Modal from "../components/Modal";
 import Carousel from "../components/Carousel";
 import { MessageCircle, Heart } from "lucide-react";
 import CommonButton from "../components/CommonButton";
+import SEO from "../components/SEO";
 
 const Project = ({ project, onClick, onLike }) => {
   const firstImage =
@@ -49,15 +50,16 @@ const Project = ({ project, onClick, onLike }) => {
       <div className="flex grow flex-col md:flex-row overflow-hidden"> 
         
           <img
-            className="w-full md:w-1/2 object-fit"
+            className="w-full md:w-1/2 object-cover"
             src={firstImage}
-            alt="Blog Image"
+            alt={project.title || "Vital Voices Medical Advocacy Project"}
+            loading="lazy"
           />  
                 
           <div className="p-3 lg:p-5 flex-1">
-            <h5 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h3 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {project.title}
-            </h5>
+            </h3>
             <p className="mb-2 text-xs float-right">
               {" "}
               - Project created by 
@@ -182,13 +184,19 @@ const OurWorks = () => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center min_height"
     >
+      <SEO
+        title="Our Work & Projects | Vital Voices Medical Advocacy"
+        description="Discover our healthcare initiatives, rural medical workshops, and outreach projects designed to expand healthcare accessibility globally."
+        canonical="https://vvmadvocacy.com/#/ourwork"
+      />
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
-          <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            Our Work at VVMA 
-          </h2>
+          <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
+            Our Work & Community Health Initiatives
+          </h1>
           <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
-          <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
+            <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
+              From grassroots CPR training camps to patient care distribution, explore our ongoing and past healthcare projects transforming vulnerable communities.
             </p>
           </div>
           {loading ? (

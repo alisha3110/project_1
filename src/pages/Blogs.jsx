@@ -5,6 +5,7 @@ import Modal from "../components/Modal";
 import Carousel from "../components/Carousel";
 import { MessageCircle, Heart } from "lucide-react";
 import CommonButton from "../components/CommonButton";
+import SEO from "../components/SEO";
 
 const Blog = ({ blog, onClick, onLike }) => {
   const firstImage =
@@ -48,14 +49,15 @@ const Blog = ({ blog, onClick, onLike }) => {
       <div className="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 min-h-[300px] max-h-full md:max-h-[300px] flex flex-col">
         <div className="flex grow flex-col md:flex-row overflow-hidden">
           <img
-            className="w-full md:w-1/2 object-fit"
+            className="w-full md:w-1/2 object-cover"
             src={firstImage}
-            alt="Blog Image"
+            alt={blog.title || "Vital Voices Medical Advocacy Blog Article"}
+            loading="lazy"
           />
           <div className="p-3 lg:p-5 flex-1">
-            <h5 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h3 className="text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               {blog.title}
-            </h5>
+            </h3>
             <p className="mb-2 text-xs float-right">
               {" "}
               - By {getFullName(blog.submittedBy)}
@@ -212,11 +214,16 @@ const Blogs = () => {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center min_height"
     >
+      <SEO
+        title="Healthcare Blog & Insights | Vital Voices Medical Advocacy"
+        description="Read in-depth articles, healthcare policy research, and global health equity insights from the Vital Voices Medical Advocacy team."
+        canonical="https://vvmadvocacy.com/#/blog"
+      />
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
-          <h2 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
+          <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
             VVMA IS A VOICE FOR EQUALIZING MEDICINE
-          </h2>
+          </h1>
           <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
           <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
               At VVMA, our blog is more than just a platform—it's a resource for

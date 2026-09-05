@@ -19,7 +19,7 @@ const Footer = () => {
               className="hover:text-black transition duration-200"
             >
               Blogs
-            </Link>            
+            </Link>
             <Link
               to="/about"
               className="hover:text-black transition duration-200"
@@ -42,24 +42,36 @@ const Footer = () => {
           <div className="flex justify-center space-x-6 text-gray-600 my-5">
             <a
               href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vital Voices Medical Advocacy Facebook"
               className="hover:text-blue-500 transition duration-300"
             >
               <Facebook className="w-5" />
             </a>
             <a
               href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vital Voices Medical Advocacy Twitter"
               className="hover:text-blue-400 transition duration-300"
             >
               <Twitter className="w-5" />
             </a>
             <a
               href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vital Voices Medical Advocacy Instagram"
               className="hover:text-pink-500 transition duration-300"
             >
               <Instagram className="w-5" />
             </a>
             <a
               href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Vital Voices Medical Advocacy LinkedIn"
               className="hover:text-blue-600 transition duration-300"
             >
               <Linkedin className="w-5" />
@@ -67,7 +79,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-2 text-center text-gray-500 text-sm">
-          &copy; 2024 VVMA. All rights reserved. Powered by <a href="https://vinraytech.com" target="_blank"> vinraytech.com </a>
+          &copy; 2024 VVMA. All rights reserved. Powered by <a href="https://vinraytech.com" target="_blank" rel="noopener noreferrer"> <b>vinraytech.com</b> </a>
         </div>
       </div>
     </footer>

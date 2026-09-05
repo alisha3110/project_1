@@ -2,6 +2,7 @@ import logo from "../assets/modal_bg.jpeg";
 import logo1 from "../assets/brand_logo.png";
 import logo2 from "../assets/about_2.png";
 import { motion } from "framer-motion";
+import SEO from "../components/SEO";
 
 export default function About() {
   return (
@@ -11,15 +12,20 @@ export default function About() {
       transition={{ duration: 0.5 }}
       className="h-full flex flex-col items-center min_height"
     >
+      <SEO
+        title="About Us | Vital Voices Medical Advocacy (VVMA)"
+        description="Learn about Vital Voices Medical Advocacy, our mission to bridge global healthcare disparities through youth leadership, community CPR education, and health equity."
+        canonical="https://vvmadvocacy.com/#/about"
+      />
       <div className="container min-h-screen flex flex-col items-center px-6 py-16">
         {/* About Section */}
         <div className="text-center max-w-3xl mb-16">
-          <h1 className="text-gray-600 text-lg md:text-xl mb-2">
+          <p className="text-gray-600 text-lg md:text-xl mb-2 font-medium">
             The Full Story
+          </p>
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
+            About Vital Voices Medical Advocacy
           </h1>
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
-            About
-          </h2>
           <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
             VVMA is a youth-led organization breaking barriers in global
             healthcare accessibility. Our mission is rooted in creating
@@ -40,17 +46,18 @@ export default function About() {
           {/* Image on the left */}
           <div className="flex items-center justify-center">
             <img
-              src={logo1} // Placeholder image path, replace with the actual image path
-              alt="Mission Image"
+              src={logo1}
+              alt="Vital Voices Medical Advocacy Mission - Equalizing Healthcare"
               className="w-full h-auto object-cover shadow-lg rounded-lg"
+              loading="lazy"
             />
           </div>
 
           {/* Mission Section */}
           <div className="flex flex-col items-center justify-center px-4 md:px-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
-              Mission
-            </h3>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+              Our Mission
+            </h2>
             <p className="text-gray-600 text-sm md:text-base">
               To drive transformative change in healthcare worldwide by
               leveraging education, advocacy, and strategic partnerships to
@@ -62,9 +69,9 @@ export default function About() {
 
           {/* Vision Section */}
           <div className="flex flex-col items-center justify-center px-4 md:px-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
-              Vision
-            </h3>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4 md:mb-6">
+              Our Vision
+            </h2>
             <p className="text-gray-600 text-sm md:text-base">
               To inspire a global healthcare system where every individual has
               equal access to life-saving medical resources, knowledge, and
@@ -75,9 +82,10 @@ export default function About() {
           {/* Image on the right */}
           <div className="flex items-center justify-center">
             <img
-              src={logo2} // Placeholder image path, replace with the actual image path
-              alt="Vision Image"
+              src={logo2}
+              alt="Vital Voices Vision - Universal Healthcare Access for Underserved Communities"
               className="w-full h-auto object-cover shadow-lg rounded-lg"
+              loading="lazy"
             />
           </div>
         </div>
