@@ -76,8 +76,9 @@ const Home = () => {
       className="h-full items-center min_height"
     >
       <SEO
-        title="Vital Voices Medical Advocacy (VVMA) | Youth-Led Global Healthcare Non-Profit"
-        description="Vital Voices Medical Advocacy (VVMA) is a youth-led organization breaking global healthcare barriers through rural CPR education, community service projects, and public health equity advocacy."
+        title="Vital Voices Medical Advocacy (VVMA) | Youth-Led Global Health Non-Profit"
+        description="Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com), founded by Anvitha Rayala, is a youth-led global health non-profit leading healthcare accessibility advocacy, community health education and CPR workshops, and underserved rural medical outreach."
+        keywords="vvmadvocacy.com, Vital Voices Medical Advocacy, VVMA youth health advocacy, Anvitha Rayala VVMA, Anvitha Rayala, youth-led global health non-profit, healthcare accessibility advocacy, community health education and CPR workshops, underserved rural medical outreach, VVMA, healthcare advocacy, global health equity, rural healthcare, CPR workshops, medical education, youth healthcare organization, healthcare non-profit, health accessibility"
         canonical="https://vvmadvocacy.com/"
       />
       <div>
@@ -94,30 +95,23 @@ const Home = () => {
             }}
           ></div>
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-          <h1 className="relative z-10 text-white text-4xl font-bold sm:text-5xl md:text-6xl p-6">
+          <h1 className="relative z-10 text-white text-3xl font-bold sm:text-5xl md:text-6xl p-6">
             Vital Voices :
-            <span className="pt-4 block">Vital Voices Medical Advocacy</span>
+            <span className="pt-3 block">Vital Voices Medical Advocacy</span>
+            <span className="pt-3 block text-xl sm:text-2xl md:text-3xl font-semibold text-blue-200">
+              Youth-Led Global Health Non-Profit
+            </span>
           </h1>
-          <p className="relative text-white max-w-[90vw] md:max-w-[70vw]">
-            VVMA is a trailblazing youth-led organization focused on reshaping
-            global healthcare to make it accessible for everyone, everywhere.
+          <p className="relative text-white max-w-[90vw] md:max-w-[70vw] text-base md:text-lg">
+            VVMA (<strong>vvmadvocacy.com</strong>) is a trailblazing <strong>youth-led global health non-profit</strong> founded by <strong>Anvitha Rayala</strong>, advancing <strong>VVMA youth health advocacy</strong> and <strong>healthcare accessibility advocacy</strong> to make quality care accessible for everyone, everywhere.
           </p>
         </div>
 
         <section className="py-12 pb-6">
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
-              <p className="px-4 md:px-8 text-gray-600">
-                VVMA is a bold movement revolutionizing global healthcare. Our
-                mission? To break barriers and create a world where quality
-                healthcare is accessible to all. We do this through two powerful
-                avenues: hands-on health service projects in underserved
-                communities, bringing education, support, and medical aid to
-                those who need it most, and our advocacy platform—a space for
-                cutting-edge blogs on the latest healthcare news, breakthroughs,
-                and the fight for public health equality. With every project and
-                post, we’re sparking change, challenging norms, and paving the
-                way for a healthier, more equitable future.
+              <p className="px-4 md:px-8 text-gray-600 leading-relaxed text-base md:text-lg">
+                <strong>Vital Voices Medical Advocacy (VVMA)</strong> is a youth-led movement revolutionizing <strong>healthcare accessibility advocacy</strong> worldwide. Founded by <strong>Anvitha Rayala</strong>, our mission is to eliminate healthcare disparities and create a world where quality medical care is universally accessible. We achieve this through two dynamic avenues: hands-on <strong>underserved rural medical outreach</strong> delivering <strong>community health education and CPR workshops</strong>, and our <strong>VVMA youth health advocacy</strong> digital platform—publishing research and articles on global public health equality. With every workshop and outreach mission, we empower local communities and pave the way for a healthier, more equitable future.
               </p>
             </div>
           </div>
@@ -128,44 +122,37 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-6 md:text-4xl">
-                Objectives
+                Healthcare Accessibility Advocacy & Core Objectives
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
-                We aim to drive transformative change in global healthcare by
-                focusing on education, advocacy, and compassionate support to
-                create sustainable health equity.
+                Vital Voices Medical Advocacy drives transformative change in global healthcare through community health education and CPR workshops, youth leadership, and underserved rural medical outreach.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto">
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Healthcare Education
+                  Community Health Education and CPR Workshops
                 </h3>
                 <p className="text-gray-600">
-                  Deliver essential medical education, including CPR training
+                  Deliver life-saving medical education, including CPR training
                   and practical workshops, to empower underserved rural
-                  communities with the knowledge and skills to improve their
-                  health.
+                  communities with vital emergency response skills.
                 </p>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Leadership in Advocacy
+                  VVMA Youth Health Advocacy
                 </h3>
                 <p className="text-gray-600">
-                  Use our dynamic online platform to raise awareness on critical
-                  global healthcare issues, advocating for change and inspiring
-                  action to promote public health equality.
+                  Use our dynamic online platform to champion healthcare accessibility advocacy, raise global health awareness, and inspire youth changemakers worldwide.
                 </p>
               </div>
-              <div className="bg-white rounded-lg shadow-md p-6 text-center ">
+              <div className="bg-white rounded-lg shadow-md p-6 text-center">
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Compassionate Support
+                  Underserved Rural Medical Outreach
                 </h3>
                 <p className="text-gray-600">
-                  Collaborate with local healthcare providers to distribute
-                  vital care packages and resources, offering direct support to
-                  patients facing medical challenges.
+                  Collaborate with local providers to distribute vital care packages, medications, and resources, offering direct support to vulnerable patients in rural areas.
                 </p>
               </div>
             </div>
@@ -188,28 +175,25 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-6 md:text-4xl">
-                Services
+                Services: Youth-Led Global Health Non-Profit Initiatives
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
-                Empowering communities with CPR workshops, an advocacy platform
-                for healthcare awareness, and compassionate care packages for
-                patients in need.
+                Empowering communities with community health education and CPR workshops, an advocacy platform for healthcare accessibility, and underserved rural medical outreach.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto ">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[90vw] m-auto">
               <motion.div
                 className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer"
-                onClick={() => tabCLickHanlder("blog")}
+                onClick={() => tabCLickHanlder("ourwork")}
                 whileHover={{ scale: 1.01 }}
               >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Empowering Workshops
+                  Community Health Education and CPR Workshops
                 </h3>
                 <p className="text-gray-600">
-                  We offer tailored workshops and training sessions that equip
+                  We offer tailored workshops and CPR training sessions that equip
                   community members with life-saving skills and essential
-                  medical knowledge, empowering them to make a difference in
-                  their communities.
+                  medical knowledge to protect and care for their families.
                 </p>
               </motion.div>
               <motion.div
@@ -218,26 +202,25 @@ const Home = () => {
                 whileHover={{ scale: 1.01 }}
               >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Advocacy Platform
+                  Healthcare Accessibility Advocacy
                 </h3>
                 <p className="text-gray-600">
                   Our online hub serves as a space for raising awareness on
-                  critical healthcare issues. Through informative articles,
-                  multimedia content, and interactive resources, we engage the
-                  public and inspire action toward better healthcare equality.
+                  critical healthcare disparities, engaging the public, and
+                  inspiring global action toward public health equality.
                 </p>
               </motion.div>
               <motion.div
                 className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer"
-                onClick={() => tabCLickHanlder("blog")}
+                onClick={() => tabCLickHanlder("ourwork")}
                 whileHover={{ scale: 1.01 }}
               >
                 <h3 className="text-2xl font-semibold text-gray-700 mb-4">
-                  Compassionate Care Packages
+                  Underserved Rural Medical Outreach
                 </h3>
                 <p className="text-gray-600">
-                  We aim to deliver care packages and essential resources to
-                  support patients facing medical challenges
+                  We deliver compassionate care packages and critical medical resources
+                  directly to patients facing health challenges in underserved rural communities.
                 </p>
               </motion.div>
             </div>
@@ -314,19 +297,15 @@ const Home = () => {
           </div>
         </div> */}
 
-        {/* Marketting Section */}
+        {/* Target Audience Section */}
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-full md:max-w-[70vw] mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800 mb-6 md:text-4xl">
-                Target Audience
+                Underserved Rural Medical Outreach & Global Youth Leadership
               </h2>
               <p className="px-4 md:px-8 pb-14 text-gray-600">
-                We are dedicated to serving underserved rural communities
-                worldwide, with a particular focus on regions lacking adequate
-                healthcare infrastructure. Additionally, we aim to mobilize and
-                empower youth volunteers who are passionate about driving
-                positive change in healthcare.
+                Vital Voices Medical Advocacy is dedicated to <strong>underserved rural medical outreach</strong> worldwide, with a strong focus on communities lacking critical medical infrastructure. Through <strong>VVMA youth health advocacy</strong>, we mobilize passionate youth volunteers and future medical leaders to champion universal <strong>healthcare accessibility advocacy</strong> and life-saving <strong>community health education and CPR workshops</strong>.
               </p>
             </div>
           </div>

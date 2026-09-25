@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import Modal from "../components/Modal";
 import Carousel from "../components/Carousel";
-import { MessageCircle, Heart } from "lucide-react";
 import CommonButton from "../components/CommonButton";
 import SEO from "../components/SEO";
 
@@ -115,8 +114,8 @@ const OurWorks = () => {
   };
 
   const handleLikeUpdate = (id, liked) => {
-    setOurWork((prevOurWork) =>
-      prevOurWork.map((project) =>
+    setProjects((prevProjects) =>
+      prevProjects.map((project) =>
         project.id === id
           ? {
               ...project,
@@ -139,19 +138,19 @@ const OurWorks = () => {
     setCommentLoader(true);
     try {
       await axios.put(
-        `https://project-1-be.onrender.com/ourwork/comment/${selectedBlog.id}`,
+        `https://project-1-be.onrender.com/ourwork/comment/${selectedProject.id}`,
         {
           comment: newComment,
         }
       );
 
-      // Update the selected blog's comments in state
+      // Update the selected project's comments in state
       setSelectedProject((prevProject) => ({
         ...prevProject,
         comments: [...prevProject.comments, newComment],
       }));
-      setOurWork((prevOurWork) =>
-        prevOurWork.map((project) =>
+      setProjects((prevProjects) =>
+        prevProjects.map((project) =>
           project.id === selectedProject.id
             ? { ...project, comments: [...project.comments, newComment] }
             : project
@@ -185,18 +184,19 @@ const OurWorks = () => {
       className="h-full flex flex-col items-center min_height"
     >
       <SEO
-        title="Our Work & Projects | Vital Voices Medical Advocacy"
-        description="Discover our healthcare initiatives, rural medical workshops, and outreach projects designed to expand healthcare accessibility globally."
+        title="Our Work & Initiatives | Vital Voices Medical Advocacy (VVMA) | vvmadvocacy.com"
+        description="Explore projects by Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com), founded by Anvitha Rayala, featuring community health education and CPR workshops, healthcare accessibility advocacy, and underserved rural medical outreach."
+        keywords="underserved rural medical outreach, community health education and CPR workshops, healthcare accessibility advocacy, youth-led global health non-profit, VVMA youth health advocacy, Vital Voices Medical Advocacy, vvmadvocacy.com, Anvitha Rayala VVMA, rural healthcare projects"
         canonical="https://vvmadvocacy.com/#/ourwork"
       />
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
           <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            Our Work & Community Health Initiatives
+            Our Work: Underserved Rural Medical Outreach & Community Health Education
           </h1>
-          <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
-            <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
-              From grassroots CPR training camps to patient care distribution, explore our ongoing and past healthcare projects transforming vulnerable communities.
+          <div className="w-[85vw] md:w-[65vw] m-auto pb-10 text-center">
+            <p className="text-gray-600 text-sm md:text-base mt-2 px-6 leading-relaxed">
+              From hands-on <strong>community health education and CPR workshops</strong> to emergency supply distribution and <strong>underserved rural medical outreach</strong>, explore how <strong>Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com)</strong> and <strong>Anvitha Rayala</strong> champion global <strong>healthcare accessibility advocacy</strong>.
             </p>
           </div>
           {loading ? (

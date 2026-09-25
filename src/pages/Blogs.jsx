@@ -215,23 +215,19 @@ const Blogs = () => {
       className="h-full flex flex-col items-center min_height"
     >
       <SEO
-        title="Healthcare Blog & Insights | Vital Voices Medical Advocacy"
-        description="Read in-depth articles, healthcare policy research, and global health equity insights from the Vital Voices Medical Advocacy team."
+        title="Healthcare Accessibility Advocacy Blog | Vital Voices Medical Advocacy (VVMA)"
+        description="Read articles on healthcare accessibility advocacy, community health education and CPR workshops, and underserved rural medical outreach from Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com), founded by Anvitha Rayala."
+        keywords="healthcare accessibility advocacy, VVMA youth health advocacy, youth-led global health non-profit, Vital Voices Medical Advocacy, vvmadvocacy.com, Anvitha Rayala VVMA, community health education and CPR workshops, underserved rural medical outreach, global health blogs"
         canonical="https://vvmadvocacy.com/#/blog"
       />
       <section className="py-16 dark:bg-gray-900 w-full">
         <div className="container mx-auto px-4 w-full">
           <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            VVMA IS A VOICE FOR EQUALIZING MEDICINE
+            Healthcare Accessibility Advocacy Blog | VVMA Youth Health Advocacy
           </h1>
-          <div className="w-[80vw] md:w-[60vw] m-auto pb-10 text-center">
-          <p className="text-gray-600 text-sm md:text-base mt-2 px-6">
-              At VVMA, our blog is more than just a platform—it's a resource for
-              change. Through in-depth and researched articles, we dive into
-              critical health issues, exploring the challenges and disparities
-              that exist in global healthcare along with exciting new medical
-              technologies. Join us as we share actionable insights and inspire
-              solutions to bridge the gaps and promote health equity for all.
+          <div className="w-[85vw] md:w-[65vw] m-auto pb-10 text-center">
+            <p className="text-gray-600 text-sm md:text-base mt-2 px-6 leading-relaxed">
+              At <strong>Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com)</strong>, founded by <strong>Anvitha Rayala</strong>, our blog serves as a leading platform for <strong>healthcare accessibility advocacy</strong>. As a <strong>youth-led global health non-profit</strong>, we investigate systemic health barriers, spotlight our <strong>underserved rural medical outreach</strong> and <strong>community health education and CPR workshops</strong>, and mobilize youth advocates to promote health equity for all.
             </p>
           </div>
           {loading ? (

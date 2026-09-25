@@ -60,22 +60,22 @@ export const ourwork = [
 
 export const teamMembers = [
   {
-    name: "Don Francis",
-    role: "Founder & CEO",
+    name: "Anvitha Rayala",
+    role: "Founder & Executive Director",
     imageUrl: logo,
     social: {
       facebook: "#",
       twitter: "#",
       linkedin: "#",
     },
-    email: "don@vvma.com",
+    email: "anvitha@vvmadvocacy.com",
     phone: "1234567890",
-    address: "500 Terry Francine Street, San Francisco, A 94158",
-    dob: "March 14th, 1984",
+    address: "vvmadvocacy.com",
+    dob: "",
     about:
-      "It has roots in a piece of classical Latin literature from 45 BC, making it  discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.",
+      "Anvitha Rayala is the founder of Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com), a youth-led global health non-profit dedicated to healthcare accessibility advocacy, community health education and CPR workshops, and underserved rural medical outreach. Passionate about health equity, Anvitha leads VVMA youth health advocacy to empower vulnerable communities and equip future leaders with life-saving skills.",
     moreAbout:
-      "Use this space to talk about how you started and share your professional journey. Explain your core values, your commitment to the workplace, and how you stand out from the crowd. Add a photo, gallery, or video for even more engagement",
+      "Under Anvitha Rayala's leadership, VVMA has grown into an international movement combining digital advocacy with hands-on medical outreach and emergency CPR workshops.",
   },
   {
     name: "Ashley Jones",

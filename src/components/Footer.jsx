@@ -78,8 +78,16 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="pt-2 text-center text-gray-500 text-sm">
-          &copy; 2024 VVMA. All rights reserved. Powered by <a href="https://vinraytech.com" target="_blank" rel="noopener noreferrer"> <b>vinraytech.com</b> </a>
+        <div className="pt-4 text-center text-gray-500 text-xs max-w-2xl mx-auto leading-relaxed">
+          <p>
+            <strong>Vital Voices Medical Advocacy (VVMA)</strong> | <a href="https://vvmadvocacy.com" className="underline hover:text-black">vvmadvocacy.com</a>
+          </p>
+          <p className="mt-1">
+            A youth-led global health non-profit founded by Anvitha Rayala, championing healthcare accessibility advocacy, community health education and CPR workshops, and underserved rural medical outreach.
+          </p>
+        </div>
+        <div className="pt-3 text-center text-gray-500 text-sm">
+          &copy; {new Date().getFullYear()} VVMA. All rights reserved. Powered by <a href="https://vinraytech.com" target="_blank" rel="noopener noreferrer"> <b>vinraytech.com</b> </a>
         </div>
       </div>
     </footer>
