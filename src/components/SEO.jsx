@@ -3,7 +3,7 @@ import { useEffect } from "react";
 /**
  * SEO Component for dynamic document title and meta tag updates on route change
  */
-const SEO = ({ title, description, canonical }) => {
+const SEO = ({ title, description, keywords, canonical }) => {
   useEffect(() => {
     // 1. Update document title
     if (title) {
@@ -29,14 +29,19 @@ const SEO = ({ title, description, canonical }) => {
       updateMetaTag("name", "twitter:description", description);
     }
 
-    // 3. Update social titles
+    // 3. Update keywords
+    if (keywords) {
+      updateMetaTag("name", "keywords", keywords);
+    }
+
+    // 4. Update social titles
     if (title) {
       updateMetaTag("name", "title", title);
       updateMetaTag("property", "og:title", title);
       updateMetaTag("name", "twitter:title", title);
     }
 
-    // 4. Update canonical link
+    // 5. Update canonical link
     if (canonical) {
       let link = document.querySelector('link[rel="canonical"]');
       if (!link) {
@@ -46,7 +51,7 @@ const SEO = ({ title, description, canonical }) => {
       }
       link.setAttribute("href", canonical);
     }
-  }, [title, description, canonical]);
+  }, [title, description, keywords, canonical]);
 
   return null;
 };

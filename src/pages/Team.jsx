@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Facebook, Twitter, Linkedin } from "lucide-react";
+import { Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
 import Modal from "../components/Modal";
 import axios from "axios";
@@ -100,22 +100,18 @@ const Team = () => {
       className="h-full flex flex-col items-center justify-center min_height"
     >
       <SEO
-        title="Our Team & Leadership | Vital Voices Medical Advocacy"
-        description="Meet the passionate leaders, healthcare advocates, and visionaries driving Vital Voices Medical Advocacy forward."
+        title="Our Team & Leadership | Vital Voices Medical Advocacy (VVMA) | Anvitha Rayala"
+        description="Meet Anvitha Rayala and the dedicated leadership team driving Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com), championing healthcare accessibility advocacy, community health education and CPR workshops, and underserved rural medical outreach."
+        keywords="Anvitha Rayala VVMA, Anvitha Rayala, Vital Voices Medical Advocacy, VVMA youth health advocacy, vvmadvocacy.com, youth-led global health non-profit, healthcare accessibility advocacy, community health education and CPR workshops, underserved rural medical outreach, VVMA team"
         canonical="https://vvmadvocacy.com/#/team"
       />
       <section className="py-16 dark:bg-gray-900">
         <div className="container mx-auto px-4">
           <h1 className="text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100">
-            Meet Our Team & Leadership
+            Meet Our Team & Leadership | VVMA Youth Health Advocacy
           </h1>
-          <p className="w-[80vw] md:w-[60vw] m-auto text-center text-gray-600 text-sm md:text-base mt-2 pb-8">
-            Vital Voices stands at the forefront of a transformative movement to
-            redefine healthcare accessibility and equity. Through our unwavering
-            commitment to innovation, collaboration, and compassion, we are
-            poised to catalyze lasting change in communities worldwide.
-            Together, let us build a future where healthcare is a universal
-            right, not a privilege, for all.
+          <p className="w-[85vw] md:w-[65vw] m-auto text-center text-gray-600 text-sm md:text-base mt-2 pb-8 leading-relaxed">
+            Led by founder <strong>Anvitha Rayala</strong>, <strong>Vital Voices Medical Advocacy (VVMA - vvmadvocacy.com)</strong> stands at the forefront of a transformative movement to redefine <strong>healthcare accessibility advocacy</strong>. As a <strong>youth-led global health non-profit</strong>, our leadership and volunteers are passionate about life-saving <strong>community health education and CPR workshops</strong> and impactful <strong>underserved rural medical outreach</strong>. Together, let us build a future where quality healthcare is a universal right for all.
           </p>
           {loading ? (
             <div role="status" className="flex justify-center mt-10">
